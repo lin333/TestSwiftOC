@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'TestSwiftOC'
-  s.version          = '0.1.2'
+  s.version          = '0.1.3'
   s.summary          = 'A short description of TestSwiftOC.'
 
 # This description is used to generate tags and improve search results.
@@ -41,7 +41,7 @@ TODO: Add long description of the pod here.
   # s.dependency 'AFNetworking', '~> 2.3'
   
   s.prefix_header_contents = '
-    #if __has_include(<TestSwiftOC/TestSwiftOC.h>)
+    #if __has_include(<TestSwiftOC/TestSwiftOC-Swift.h>)
     #import <TestSwiftOC/TestSwiftOC-Swift.h>
     #else
     #import "TestSwiftOC-Swift.h"
