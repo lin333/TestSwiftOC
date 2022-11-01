@@ -1,0 +1,16 @@
+PODS:
+  - TestSwiftOC (0.1.0)
+
+DEPENDENCIES:
+  - TestSwiftOC (from `../`)
+
+EXTERNAL SOURCES:
+  TestSwiftOC:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  TestSwiftOC: 54d5d20789706f34e88e11a46e7158174819e7fb
+
+PODFILE CHECKSUM: 029a61585dd1c865bb613c0302fe546c7142323e
+
+COCOAPODS: 1.11.3

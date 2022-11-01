@@ -7,6 +7,7 @@
 //
 
 #import "LBJViewController.h"
+#import <TestSwiftOC/LBJOC.h>
 
 @interface LBJViewController ()
 
@@ -18,6 +19,8 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    
+    [LBJOC loglog];
 }
 
 - (void)didReceiveMemoryWarning
@@ -27,3 +30,5 @@
 }
 
 @end
+
+// xcodebuild GCC_PREPROCESSOR_DEFINITIONS='$(inherited)'  ARCHS='arm64' OTHER_CFLAGS='-fembed-bitcode -Qunused-arguments' CONFIGURATION_BUILD_DIR=build-arm64 clean build -configuration Debug -target TestSwiftOC-Example
