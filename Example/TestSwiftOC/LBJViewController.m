@@ -8,6 +8,7 @@
 
 #import "LBJViewController.h"
 #import <TestSwiftOC/LBJOC.h>
+#import <TestSwiftOC/TestSwiftOC-Swift.h>
 
 @interface LBJViewController ()
 
