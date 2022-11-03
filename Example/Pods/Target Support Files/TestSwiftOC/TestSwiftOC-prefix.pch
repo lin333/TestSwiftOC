@@ -10,8 +10,3 @@
 #endif
 #endif
 
-#if __has_include(<TestSwiftOC/TestSwiftOC.h>)
-#import <TestSwiftOC/TestSwiftOC-Swift.h>
-#else
-#import "TestSwiftOC-Swift.h"
-#endif

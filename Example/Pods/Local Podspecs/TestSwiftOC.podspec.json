@@ -1,9 +1,9 @@
 {
   "name": "TestSwiftOC",
-  "version": "0.1.0",
+  "version": "0.1.6",
   "summary": "A short description of TestSwiftOC.",
   "description": "TODO: Add long description of the pod here.",
-  "homepage": "https://github.com/linbingjie/TestSwiftOC",
+  "homepage": "https://github.com/lin333/TestSwiftOC",
   "license": {
     "type": "MIT",
     "file": "LICENSE"
@@ -12,12 +12,12 @@
     "linbingjie": "linbingjie@itiger.com"
   },
   "source": {
-    "git": "https://github.com/linbingjie/TestSwiftOC.git",
-    "tag": "0.1.0"
+    "git": "https://github.com/lin333/TestSwiftOC.git",
+    "tag": "0.1.6"
   },
   "platforms": {
     "ios": "10.0"
   },
   "source_files": "TestSwiftOC/Classes/**/*",
-  "prefix_header_contents": "#if __has_include(<TestSwiftOC/TestSwiftOC.h>)\n#import <TestSwiftOC/TestSwiftOC-Swift.h>\n#else\n#import \"TestSwiftOC-Swift.h\"\n#endif"
+  "public_header_files": "TestSwiftOC/**/*.{h}"
 }

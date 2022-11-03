@@ -7,6 +7,7 @@
 
 #import "LBJOC.h"
 
+#import <TestSwiftOC/TestSwiftOC-Swift.h>
 
 @implementation LBJOC
 
