@@ -7,8 +7,13 @@
 
 #import "LBJOC.h"
 
-#import <TestSwiftOC/TestSwiftOC-Swift.h>
+//#import <TestSwiftOC/TestSwiftOC-Swift.h>
 
+#if __has_include(<TestSwiftOC/TestSwiftOC-Swift.h>)
+    #import <TestSwiftOC/TestSwiftOC-Swift.h>
+#else
+    #import "TestSwiftOC-Swift.h"
+#endif
 @implementation LBJOC
 
 + (void)loglog {
