@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'TestSwiftOC'
-  s.version          = '0.1.5'
+  s.version          = '0.1.6'
   s.summary          = 'A short description of TestSwiftOC.'
 
 # This description is used to generate tags and improve search results.
@@ -32,21 +32,14 @@ TODO: Add long description of the pod here.
 
   s.source_files = 'TestSwiftOC/Classes/**/*'
   
-  # s.resource_bundles = {
-  #   'TestSwiftOC' => ['TestSwiftOC/Assets/*.png']
-  # }
 
-  # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
-  
-  s.prefix_header_contents = '
-    #if __has_include(<TestSwiftOC/TestSwiftOC-Swift.h>)
-    #import <TestSwiftOC/TestSwiftOC-Swift.h>
-    #else
-    #import "TestSwiftOC-Swift.h"
-    #endif
-  '
+#  s.prefix_header_contents = '
+#    #if __has_include(<TestSwiftOC/TestSwiftOC-Swift.h>)
+#    #import <TestSwiftOC/TestSwiftOC-Swift.h>
+#    #else
+#    #import "TestSwiftOC-Swift.h"
+#    #endif
+#  '
   
   s.public_header_files = 'TestSwiftOC/**/*.{h}'
 
