@@ -20,7 +20,7 @@
     NSLog(@"ssss");
     
     [[[qqqS alloc] init] printtt];;
-    
+    NSLog(@"sdfsdf");
     
 }
 
