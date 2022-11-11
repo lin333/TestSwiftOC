@@ -6,7 +6,7 @@
 //
 
 import Foundation
-
+import Moya
 public class UseOC {
     public init() {
         
@@ -14,5 +14,8 @@ public class UseOC {
     
     public func useOC() {
         LBJOC.loglog2()
+        
+        MultiTarget.target(TargetType.self as! TargetType)
+
     }
 }
