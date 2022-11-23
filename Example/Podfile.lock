@@ -1,33 +1,27 @@
 PODS:
-  - Alamofire (5.6.2)
-  - MJRefresh (3.7.5)
-  - Moya (15.0.0):
-    - Moya/Core (= 15.0.0)
-  - Moya/Core (15.0.0):
-    - Alamofire (~> 5.0)
-  - TestSwiftOC (0.2.4):
-    - MJRefresh
-    - Moya
+  - lottie-ios (3.5.0)
+  - RJImageLoader (0.3.0)
+  - TestSwiftOC (0.4.3):
+    - lottie-ios
+    - RJImageLoader
 
 DEPENDENCIES:
   - TestSwiftOC (from `../`)
 
 SPEC REPOS:
   trunk:
-    - Alamofire
-    - MJRefresh
-    - Moya
+    - lottie-ios
+    - RJImageLoader
 
 EXTERNAL SOURCES:
   TestSwiftOC:
     :path: "../"
 
 SPEC CHECKSUMS:
-  Alamofire: d368e1ff8a298e6dde360e35a3e68e6c610e7204
-  MJRefresh: fdf5e979eb406a0341468932d1dfc8b7f9fce961
-  Moya: 138f0573e53411fb3dc17016add0b748dfbd78ee
-  TestSwiftOC: 32bde2ade3171ff8219ebf86e4c43fed5b264148
+  lottie-ios: c55158d67d0629a260625cc2ded2052b829e3c3e
+  RJImageLoader: f0d9edebeb7837feb0ce51759826900645770db7
+  TestSwiftOC: 7d915521ce6cd54edb9421432ad7cde46baba73f
 
-PODFILE CHECKSUM: e361aa6662f127cd77d4fe0c1c8446c259cb76d5
+PODFILE CHECKSUM: 125838282a5ba3520803764b2b96b8a28a4431f2
 
 COCOAPODS: 1.11.3
