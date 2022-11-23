@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Lottie
 
 @objcMembers
 open class qqqS: NSObject {
@@ -15,5 +16,8 @@ open class qqqS: NSObject {
         print(userid)
         
         UseOC().useOC()
+        
+        let vv = LottieColor(r: 1, g: 1, b: 1, a: 1)
+
     }
 }

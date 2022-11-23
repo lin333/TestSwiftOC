@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'TestSwiftOC'
-  s.version          = '0.4.1'
+  s.version          = '0.4.2'
   s.summary          = 'A short description of TestSwiftOC.'
 
 # This description is used to generate tags and improve search results.
@@ -33,6 +33,7 @@ TODO: Add long description of the pod here.
   s.source_files = 'TestSwiftOC/Classes/**/*'
   
   s.dependency 'RJImageLoader'
+  s.dependency 'lottie-ios'
 
 #  s.dependency 'MJRefresh'
   # s.dependency 'Moya'
