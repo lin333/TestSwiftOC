@@ -273,7 +273,7 @@
 		164F76714262DDF13F25A797E8C0881A /* SolidLayerModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SolidLayerModel.swift; path = Sources/Private/Model/Layers/SolidLayerModel.swift; sourceTree = "<group>"; };
 		16F61AAF63052C3054122E70835C089E /* TransformAnimations.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TransformAnimations.swift; path = Sources/Private/CoreAnimation/Animations/TransformAnimations.swift; sourceTree = "<group>"; };
 		17DC262A5566999B4DE56E0D2A78686B /* Pods-TestSwiftOC_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-TestSwiftOC_Example.release.xcconfig"; sourceTree = "<group>"; };
-		191044DF292E4EEA00932AB3 /* Lottie-Swift.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Lottie-Swift.h"; path = "TestSwiftOC/Classes/Lottie-Swift.h"; sourceTree = "<group>"; };
+		191044E0292E500200932AB3 /* TestSwiftOC-Swift.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "TestSwiftOC-Swift.h"; path = "TestSwiftOC/Classes/TestSwiftOC-Swift.h"; sourceTree = "<group>"; };
 		1B26F3FB8196494E6DB509436C6CC567 /* CGPointExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CGPointExtension.swift; path = Sources/Private/Utility/Primitives/CGPointExtension.swift; sourceTree = "<group>"; };
 		1B406CB864C81ACFFB1E5462D98BA71E /* Rectangle.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Rectangle.swift; path = Sources/Private/Model/ShapeItems/Rectangle.swift; sourceTree = "<group>"; };
 		1B99EDCBDC160062A48303A4BFE6F5E4 /* PointValueProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PointValueProvider.swift; path = Sources/Public/DynamicProperties/ValueProviders/PointValueProvider.swift; sourceTree = "<group>"; };
@@ -524,8 +524,8 @@
 			isa = PBXGroup;
 			children = (
 				35129382F06A40D52E147A6A00E7B0DB /* LBJOC.h */,
+				191044E0292E500200932AB3 /* TestSwiftOC-Swift.h */,
 				810D5AA33FD64AC7FB8CD1D49E90CFDC /* LBJOC.m */,
-				191044DF292E4EEA00932AB3 /* Lottie-Swift.h */,
 				8E3678AC9BF33F46E445EB0ABDD8D353 /* qqqS.swift */,
 				521502DB9C801B52453D5E3C525DB5F5 /* TestSwiftOC.h */,
 				71EA617DCE0AA2C1E68F064FC4C80B35 /* UseOC.swift */,
