@@ -32,8 +32,8 @@ TODO: Add long description of the pod here.
 
   s.source_files = 'TestSwiftOC/Classes/**/*'
   
-  s.dependency 'RJImageLoader'
-  s.pod_target_xcconfig = { 'DEFINES_MODULE' => 'YES' }
+#  s.dependency 'RJImageLoader'
+#  s.pod_target_xcconfig = { 'DEFINES_MODULE' => 'YES' }
 
 #  s.dependency 'MJRefresh'
   # s.dependency 'Moya'
