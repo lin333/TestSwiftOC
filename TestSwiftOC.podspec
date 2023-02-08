@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'TestSwiftOC'
-  s.version          = '0.5.5'
+  s.version          = '0.5.6'
   s.summary          = 'A short description of TestSwiftOC.'
 
 # This description is used to generate tags and improve search results.
@@ -30,8 +30,8 @@ TODO: Add long description of the pod here.
 
   s.ios.deployment_target = '12.0'
 
-  # s.static_framework = true
-  # s.pod_target_xcconfig = { "DEFINES_MODULE" => "YES" }
+  s.static_framework = true
+  s.pod_target_xcconfig = { "DEFINES_MODULE" => "YES" }
   s.swift_version = "5.0"
   
   s.source_files = 'TestSwiftOC/Classes/**/*'
