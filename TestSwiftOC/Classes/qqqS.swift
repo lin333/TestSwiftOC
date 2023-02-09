@@ -21,3 +21,17 @@ open class qqqS: NSObject {
 
     }
 }
+
+
+open class StudDetails {
+    var stname: String!
+    var mark1: Int!
+    var mark2: Int!
+    var mark3: Int!
+    init() {
+        self.stname = "sdf"
+        self.mark1 = 10
+        self.mark2 = 30
+        self.mark3 = 450
+    }
+}
