@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'TestSwiftOC'
-  s.version          = '0.5.7'
+  s.version          = '0.5.8'
   s.summary          = 'A short description of TestSwiftOC.'
 
 # This description is used to generate tags and improve search results.
@@ -49,7 +49,7 @@ TODO: Add long description of the pod here.
 #    #endif
 #  '
   
-  s.public_header_files = 'TestSwiftOC/**/*.{h}'
+#  s.public_header_files = 'TestSwiftOC/**/*.{h,swift}'
 
   
 end
