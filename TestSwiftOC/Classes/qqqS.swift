@@ -28,7 +28,7 @@ open class StudDetails {
     var mark1: Int!
     var mark2: Int!
     var mark3: Int!
-    init() {
+    public init() {
         self.stname = "sdf"
         self.mark1 = 10
         self.mark2 = 30
