@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import Lottie
+//import Lottie
 
 @objcMembers
 open class qqqS: NSObject {
@@ -17,7 +17,7 @@ open class qqqS: NSObject {
         
         UseOC().useOC()
         
-        let vv = LottieColor(r: 1, g: 1, b: 1, a: 1)
+//        let vv = LottieColor(r: 1, g: 1, b: 1, a: 1)
 
     }
 }
