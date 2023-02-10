@@ -8,7 +8,7 @@
 import Foundation
 //import Lottie
 
-@objcMembers
+//@objcMembers
 open class qqqS: NSObject {
     open var userid:Int = 10
     
@@ -32,6 +32,6 @@ open class StudDetails {
         self.stname = "sdf"
         self.mark1 = 10
         self.mark2 = 30
-        self.mark3 = 450
+        self.mark3 = 10
     }
 }
