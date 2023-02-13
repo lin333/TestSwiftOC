@@ -10,8 +10,10 @@ import Foundation
 
 //@objcMembers
 open class qqqS: NSObject {
+    @objc
     open var userid:Int = 10
     
+    @objc
     open func printtt() {
         print(userid)
         
