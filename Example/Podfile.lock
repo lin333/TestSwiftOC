@@ -1,16 +1,20 @@
 PODS:
-  - lottie-ios (3.5.0)
   - RJImageLoader (0.3.0)
-  - TestSwiftOC (0.4.3):
-    - lottie-ios
+  - TestSwiftOC (0.7.0):
     - RJImageLoader
+    - TestSwiftOC/Core (= 0.7.0)
+    - TestSwiftOC/MapKit (= 0.7.0)
+  - TestSwiftOC/Core (0.7.0):
+    - RJImageLoader
+  - TestSwiftOC/MapKit (0.7.0):
+    - RJImageLoader
+    - TestSwiftOC/Core
 
 DEPENDENCIES:
   - TestSwiftOC (from `../`)
 
 SPEC REPOS:
   trunk:
-    - lottie-ios
     - RJImageLoader
 
 EXTERNAL SOURCES:
@@ -18,10 +22,9 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  lottie-ios: c55158d67d0629a260625cc2ded2052b829e3c3e
   RJImageLoader: f0d9edebeb7837feb0ce51759826900645770db7
-  TestSwiftOC: 7d915521ce6cd54edb9421432ad7cde46baba73f
+  TestSwiftOC: 1de1a0373fcaafded71cc9760c3463c4215ad48e
 
-PODFILE CHECKSUM: 125838282a5ba3520803764b2b96b8a28a4431f2
+PODFILE CHECKSUM: e361aa6662f127cd77d4fe0c1c8446c259cb76d5
 
 COCOAPODS: 1.11.3

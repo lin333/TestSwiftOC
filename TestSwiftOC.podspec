@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'TestSwiftOC'
-  s.version          = '0.6.9'
+  s.version          = '0.7.0'
   s.summary          = 'A short description of TestSwiftOC.'
 
 # This description is used to generate tags and improve search results.
@@ -34,11 +34,22 @@ TODO: Add long description of the pod here.
   s.pod_target_xcconfig = { "DEFINES_MODULE" => "YES" }
   s.swift_version = "5.0"
   
-  s.source_files = 'TestSwiftOC/Classes/**/*'
+#  s.source_files = 'TestSwiftOC/Classes/**/*'
   
   s.dependency 'RJImageLoader'
   # s.dependency 'lottie-ios'
 
+  s.subspec 'Core' do |mk|
+    mk.source_files = 'TestSwiftOC/Core/*.{h,m,swift}'
+  end
+  
+  s.subspec 'MapKit' do |mk|
+    mk.source_files = 'TestSwiftOC/MapKit/*.{h,m,swift}'
+    mk.framework = 'MapKit'
+    mk.dependency 'TestSwiftOC/Core'
+  end
+
+  
 #  s.dependency 'MJRefresh'
   # s.dependency 'Moya'
 #  s.prefix_header_contents = '

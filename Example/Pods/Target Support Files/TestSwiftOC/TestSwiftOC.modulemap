@@ -1,4 +1,4 @@
-module TestSwiftOC {
+framework module TestSwiftOC {
   umbrella header "TestSwiftOC-umbrella.h"
 
   export *
