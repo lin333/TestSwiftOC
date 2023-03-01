@@ -15,6 +15,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (void)loglog2;
 
++ (void)loglog3333;
+
 @end
 
 NS_ASSUME_NONNULL_END
