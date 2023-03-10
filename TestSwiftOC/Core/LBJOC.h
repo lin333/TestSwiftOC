@@ -24,6 +24,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (void)loglog706;
 
++ (void)aweiawei;
+
 @end
 
 NS_ASSUME_NONNULL_END
