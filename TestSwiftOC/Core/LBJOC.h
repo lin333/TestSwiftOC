@@ -20,7 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (void)loglog555;
 
-+ (void)loglog666;
++ (void)loglog6662222;
 
 @end
 
