@@ -25,6 +25,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (void)loglog706;
 
 + (void)aweiawei;
++ (void)aweiawei222;
 
 @end
 
