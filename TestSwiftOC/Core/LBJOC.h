@@ -30,7 +30,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (void)aweiawei004;
 + (void)aweiawei006;
 
-+ (void)aweiawei801;
++ (void)aweiawei081;
 @end
 
 NS_ASSUME_NONNULL_END
