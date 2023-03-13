@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'TestSwiftOC'
-  s.version          = '0.4.7'
+  s.version          = '0.8.5'
   s.summary          = 'A short description of TestSwiftOC.'
 
 # This description is used to generate tags and improve search results.
@@ -25,15 +25,31 @@ TODO: Add long description of the pod here.
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'linbingjie' => 'linbingjie@itiger.com' }
-  s.source           = { :git => 'https://github.com/lin333/TestSwiftOC.git', :tag => s.version.to_s }
+  s.source           = { :git => 'https://github.com/lin333/TestSwiftOC.git', :branch => 'dev'}
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
-  s.ios.deployment_target = '10.0'
+  s.ios.deployment_target = '12.0'
 
-  s.source_files = 'TestSwiftOC/Classes/**/*'
+  s.static_framework = true
+  s.pod_target_xcconfig = { "DEFINES_MODULE" => "YES" }
+  s.swift_version = "5.0"
   
-  s.dependency 'RJImageLoader'
+#  s.source_files = 'TestSwiftOC/Classes/**/*'
+  
+  # s.dependency 'RJImageLoader'
+  # s.dependency 'lottie-ios'
 
+  s.subspec 'Core' do |mk|
+    mk.source_files = 'TestSwiftOC/Core/*.{h,m,swift}'
+  end
+  
+  s.subspec 'MapKit' do |mk|
+    mk.source_files = 'TestSwiftOC/MapKit/*.{h,m,swift}'
+    mk.framework = 'MapKit'
+    mk.dependency 'TestSwiftOC/Core'
+  end
+
+  
 #  s.dependency 'MJRefresh'
   # s.dependency 'Moya'
 #  s.prefix_header_contents = '
@@ -44,7 +60,8 @@ TODO: Add long description of the pod here.
 #    #endif
 #  '
   
-  s.public_header_files = 'TestSwiftOC/**/*.{h}'
+#  s.public_header_files = 'TestSwiftOC/**/*.{h,swift}'
 
   
 end
+ 

@@ -10,10 +10,9 @@
 #endif
 #endif
 
-#import "LBJOC.h"
-#import "TestSwiftOC.h"
-#import "LBJOCTarget.h"
+#import "RJCircularLoaderView.h"
+#import "UIImageView+RJLoader.h"
 
-FOUNDATION_EXPORT double TestSwiftOCVersionNumber;
-FOUNDATION_EXPORT const unsigned char TestSwiftOCVersionString[];
+FOUNDATION_EXPORT double RJImageLoaderVersionNumber;
+FOUNDATION_EXPORT const unsigned char RJImageLoaderVersionString[];
 
