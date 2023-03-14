@@ -55,6 +55,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (void)aweiawei086qqqqqqqqq094;
 
++ (void)aweiawei086qqqqqqqqq094dev;
+
 @end
 
 NS_ASSUME_NONNULL_END
