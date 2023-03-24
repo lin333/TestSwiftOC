@@ -10,7 +10,7 @@
 		0BA236B3624F2FB51324B9C829443444 /* LBJOC.h in Headers */ = {isa = PBXBuildFile; fileRef = 2CEC9EA7DCB704A17726DF4045ECCDC4 /* LBJOC.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0E1AE00EB0F21C266FAABBBCEF827CCF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
 		15A66579ACD4972EC7C04C23355CA932 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
-		19843CCF29CD886E00FE1ABA /* arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E5B878A1D2148F31BCEA02768899BCCD /* arrow@2x.png */; };
+		19843CD029CD891F00FE1ABA /* arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E5B878A1D2148F31BCEA02768899BCCD /* arrow@2x.png */; };
 		3ED0E9C8D7C6A057D4C69B5ECC9B7D20 /* Pods-TestSwiftOC_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = D9E9D8BC6E71DC661ACBD81FE4C927B3 /* Pods-TestSwiftOC_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		40783A0577BC4AECD1995233E82590BE /* Pods-TestSwiftOC_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 3903E5E69440118562744693ED04D504 /* Pods-TestSwiftOC_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		66E478335E2A4269B93A38ED5B21E7FF /* qqqS.swift in Sources */ = {isa = PBXBuildFile; fileRef = A385F3A34640A96BAA700E19332A687A /* qqqS.swift */; };
@@ -394,7 +394,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				19843CCF29CD886E00FE1ABA /* arrow@2x.png in Resources */,
+				19843CD029CD891F00FE1ABA /* arrow@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
