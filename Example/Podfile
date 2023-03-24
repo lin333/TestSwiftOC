@@ -1,6 +1,6 @@
 source 'https://github.com/cocoapods/specs.git'
 
-plugin 'cocoapods-bin'
+#plugin 'cocoapods-bin'
 
 use_frameworks!
 

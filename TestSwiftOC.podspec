@@ -34,6 +34,11 @@ TODO: Add long description of the pod here.
   s.pod_target_xcconfig = { "DEFINES_MODULE" => "YES" }
   s.swift_version = "5.0"
   
+  s.resources  = "TestSwiftOC/**/*.{,png,bundle,storyboard,xib,xcassets}"
+
+  
+  
+  
 #  s.source_files = 'TestSwiftOC/Classes/**/*'
   
   # s.dependency 'RJImageLoader'
