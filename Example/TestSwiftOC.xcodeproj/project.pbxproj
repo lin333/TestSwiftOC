@@ -207,7 +207,7 @@
 				6003F586195388D20070C39A /* Sources */,
 				6003F587195388D20070C39A /* Frameworks */,
 				6003F588195388D20070C39A /* Resources */,
-				6AD35907066FDED3AFFBC34E /* [CP] Copy Pods Resources */,
+				80BCE4CD16F4568C44CD0CC7 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -320,22 +320,22 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		6AD35907066FDED3AFFBC34E /* [CP] Copy Pods Resources */ = {
+		80BCE4CD16F4568C44CD0CC7 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-TestSwiftOC_Example/Pods-TestSwiftOC_Example-resources.sh",
-				"${PODS_ROOT}/../../TestSwiftOC/arrow@2x.png",
+				"${PODS_ROOT}/Target Support Files/Pods-TestSwiftOC_Example/Pods-TestSwiftOC_Example-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/TestSwiftOC/TestSwiftOC.framework",
 			);
-			name = "[CP] Copy Pods Resources";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/arrow@2x.png",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TestSwiftOC.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TestSwiftOC_Example/Pods-TestSwiftOC_Example-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TestSwiftOC_Example/Pods-TestSwiftOC_Example-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		D2E535F8B783CB4B890A2DD8 /* [CP] Check Pods Manifest.lock */ = {

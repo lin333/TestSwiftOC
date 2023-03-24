@@ -18,11 +18,6 @@
   "platforms": {
     "ios": "10.0"
   },
-  "static_framework": true,
-  "pod_target_xcconfig": {
-    "DEFINES_MODULE": "YES"
-  },
-  "swift_versions": "5.0",
   "resources": "TestSwiftOC/**/*.{,png,bundle,storyboard,xib,xcassets}",
   "subspecs": [
     {
@@ -39,6 +34,5 @@
         ]
       }
     }
-  ],
-  "swift_version": "5.0"
+  ]
 }

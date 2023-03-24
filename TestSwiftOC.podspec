@@ -30,9 +30,9 @@ TODO: Add long description of the pod here.
 
   s.ios.deployment_target = '10.0'
 
-  s.static_framework = true
-  s.pod_target_xcconfig = { "DEFINES_MODULE" => "YES" }
-  s.swift_version = "5.0"
+#  s.static_framework = true
+#  s.pod_target_xcconfig = { "DEFINES_MODULE" => "YES" }
+#  s.swift_version = "5.0"
   
   s.resources  = "TestSwiftOC/**/*.{,png,bundle,storyboard,xib,xcassets}"
 
