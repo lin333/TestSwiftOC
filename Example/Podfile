@@ -9,9 +9,8 @@ platform :ios, '12.0'
 target 'TestSwiftOC_Example' do
   pod 'TestSwiftOC', :path => '../'
 
-  target 'TestSwiftOC_Tests' do
-    inherit! :search_paths
+  pod 'ChartKLineView', :podspec => 'https://git.tigerbrokers.net/luopengfei/TBChartViews/raw/Dev/ChartKLineView.podspec'
+  pod 'TBBaseKit', :podspec => 'https://git.tigerbrokers.net/ios/TBBaseKit/raw/dev/TBBaseKit.podspec', :modular_headers => true
+  pod 'TBServiceProtocolKit', :podspec => 'https://git.tigerbrokers.net/ios/TBServiceProtocolKit/raw/dev/TBServiceProtocolKit.podspec'
 
-    
-  end
 end

@@ -1,0 +1,59 @@
+/* 
+  Localizable.strings
+  TBBaseKit
+
+  Created by chenxin on 2021/2/22.
+  
+*/
+
+"连接超时" = "Connection timed out";
+
+"无法解析服务器地址" = "Unable to resolve server address";
+
+"无法连接到服务器" = "Unable to connect to server";
+
+"网络异常，请检查您的网络设置。" = "Network error, please check your network settings.";
+
+"服务暂不可用" = "Service is temporarily unavailable";
+
+"连接失败，请刷新重试" = "Connection failed, please refresh the page and try again";
+
+"取消" = "Cancel";
+
+"交易日 09:30 - 次日 05:00" = "Trading Day 09:30 - Next Day 05:00";
+
+"%d 分钟前" = "%d minutes ago";
+
+"%d 秒前" = "%d seconds ago";
+
+"%ld分钟" = "%ld minutes";
+
+"%ld天" = "%ld days";
+
+"%ld小时" = "%ld hours";
+
+"%ld小时%ld分钟" = "%ld hours %ld minutes";
+
+"(周一至周五09:00 - 22:00)" = "(Monday to Friday 09:00 - 22:00)";
+
+"1 分钟前" = "1 minute ago";
+
+"1分钟" = "1 Min";
+
+"MM月dd日" = "MM/dd";
+
+"MM月dd日 HH:mm" = "MM month dd day HH:mm";
+
+"今天" = "Today";
+
+"今天 %@" = "Today %@";
+
+"刚刚" = "Latest";
+
+"非交易时段,订单将于美东时间%@被提交至交易所." = "During non-trading hours, orders will be submitted to the exchange at %@ EST.";
+
+"连接超时，请刷新重试" = "Connection timed out, please refresh the page and try again";
+
+"网络异常，请检查您的网络" = "Network is not available, please check and try again";
+
+"暂无数据" = "No Data";

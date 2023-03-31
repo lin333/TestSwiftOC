@@ -36,7 +36,7 @@ TODO: Add long description of the pod here.
   
   s.resources  = "TestSwiftOC/**/*.{,png,bundle,storyboard,xib,xcassets}"
 
-  
+  s.dependency 'ChartKLineView'
   
   
 #  s.source_files = 'TestSwiftOC/Classes/**/*'

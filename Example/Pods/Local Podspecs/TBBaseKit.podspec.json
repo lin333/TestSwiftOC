@@ -1,0 +1,84 @@
+{
+  "name": "TBBaseKit",
+  "version": "8.1.3.0.2",
+  "summary": "TBBaseKit",
+  "description": "This is a private repository for Tiger Brokers",
+  "homepage": "https://git.tigerbrokers.net/ios/TBBaseKit",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "chenxin": "chenxin@tigerbrokers.com"
+  },
+  "platforms": {
+    "ios": "12.0"
+  },
+  "source": {
+    "git": "https://git.tigerbrokers.net/ios/TBBaseKit.git",
+    "branch": "dev"
+  },
+  "resource_bundles": {
+    "TBBaseKit": "Sources/**/*.{storyboard,xib,xcassets,strings}"
+  },
+  "source_files": "Sources/**/*.{h,m,swift,mm}",
+  "dependencies": {
+    "TBServiceProtocolKit": [
+
+    ],
+    "Reachability": [
+
+    ],
+    "FLAnimatedImage": [
+
+    ],
+    "MBProgressHUD": [
+
+    ],
+    "SensorsAnalyticsSDK": [
+
+    ],
+    "UICKeyChainStore": [
+
+    ],
+    "FMDB": [
+      "~> 2.7.5"
+    ],
+    "YYCategories": [
+      "1.0.4"
+    ],
+    "SDWebImage": [
+
+    ],
+    "AFNetworking": [
+
+    ],
+    "JSONModel": [
+
+    ],
+    "Masonry": [
+
+    ],
+    "MJExtension": [
+
+    ],
+    "DHSmartScreenshot": [
+
+    ],
+    "YYModel": [
+
+    ],
+    "IQKeyboardManager": [
+
+    ],
+    "AppsFlyerFramework": [
+
+    ]
+  },
+  "public_header_files": "Sources/**/*.{h}",
+  "pod_target_xcconfig": {
+    "DEFINES_MODULE": "YES"
+  },
+  "swift_versions": "5.0",
+  "swift_version": "5.0"
+}
