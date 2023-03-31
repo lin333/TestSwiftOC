@@ -38,42 +38,6 @@ open class TBCommonChartYAxis : YAxis {
     /// 最长Y轴值，当两个图表共用一个X轴时，需要统一Y轴边距时可以赋给最大值
     @objc open var longestText: String = ""
     
-    open override func getLongestLabel() -> String
-    {
-        var longest = ""
-        
-        if longestText.count > 0 {
-            return longestText
-        }
-        
-        let bussinessSupportService = TBServiceManager.sharedInstance().createService(NSProtocolFromString("TBBusinessSupportService")!) as! TBBusinessSupportService
-        for i in 0 ..< entries.count
-        {
-            let text = shouldLocalFormat ? (bussinessSupportService.tbBusinessSupport_formatVolumeCount(Int64(entries[i]))) : getFormattedLabel(i)
-            
-            if (longest.count <= text.count)
-            {
-                longest = text
-            }
-        }
-        
-        return longest
-    }
-    
-    @objc open override func getFormattedLabel(_ index: Int) -> String
-    {
-        if index < 0 || index >= entries.count
-        {
-            return ""
-        }
-        
-        let bussinessSupportService = TBServiceManager.sharedInstance().createService(NSProtocolFromString("TBBusinessSupportService")!) as! TBBusinessSupportService
-
-        if shouldLocalFormat {
-            return bussinessSupportService.tbBusinessSupport_formatVolumeCount(Int64(entries[index]))
-        }
-        return valueFormatter?.stringForValue(entries[index], axis: self) ?? ""
-    }
     
     // MARK: - 下面逻辑是修复两个点（value）相同时，没有画出横线的问题
     open override func calculate(min dataMin: Double, max dataMax: Double)
