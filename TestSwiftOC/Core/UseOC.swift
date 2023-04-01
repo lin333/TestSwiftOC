@@ -6,9 +6,7 @@
 //
 
 import Foundation
-import UIKit
 import ChartKLineView
-
 
 public class UseOC {
     public init() {
@@ -22,23 +20,23 @@ public class UseOC {
 }
 
 open class TBCommonChartYAxis : YAxis {
-    
+
     //边框线是否包含y坐标轴
     @objc open var bigGrideBorder: Bool = false
     // 是否需要将大数进行万、千万等格式化，使用TBUtils.formatVolumeCount方法格式化
     @objc open var shouldLocalFormat: Bool = false
-    
+
     @objc open var customYAxisEntried: Bool = false
-    
+
     // 最大值、最小值是否需要对齐图表顶部和底部
     @objc open var shouldAlignTop: Bool = false
     @objc open var shouldAlignBottom: Bool = false
 
-    
+
     /// 最长Y轴值，当两个图表共用一个X轴时，需要统一Y轴边距时可以赋给最大值
     @objc open var longestText: String = ""
-    
-    
+
+
     // MARK: - 下面逻辑是修复两个点（value）相同时，没有画出横线的问题
     open override func calculate(min dataMin: Double, max dataMax: Double)
     {
@@ -97,11 +95,11 @@ open class TBCommonChartYAxis : YAxis {
         // calc actual range
         axisRange = abs(_axisMaximum - _axisMinimum)
     }
-    
+
     private func validYChartMinMax() {
         var min = _axisMinimum
         var max = _axisMaximum
-        
+
         if min.isNaN || max.isNaN || min.isInfinite || max.isInfinite {
             min = 0
             max = 0.1
@@ -124,7 +122,7 @@ open class TBCommonChartYAxis : YAxis {
         _axisMaximum = max
         _axisMinimum = min
     }
-    
+
     //如果图表只有一个值会出现最大值最小值相同，造成坐标展示问题
     //以10的三次方为阶段，分别为5 15 20
     private func sameMinMaxMultiplier(_ value: Double) -> Double {

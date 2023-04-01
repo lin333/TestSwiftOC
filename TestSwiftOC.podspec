@@ -37,13 +37,12 @@ TODO: Add long description of the pod here.
   s.resources  = "TestSwiftOC/**/*.{,png,bundle,storyboard,xib,xcassets}"
 
   s.dependency 'ChartKLineView'
-  
-  
 #  s.source_files = 'TestSwiftOC/Classes/**/*'
   
   # s.dependency 'RJImageLoader'
   # s.dependency 'lottie-ios'
-
+#  s.dependency 'lottie-ios'
+  
   s.subspec 'Core' do |mk|
     mk.source_files = 'TestSwiftOC/Core/*.{h,m,swift}'
   end
@@ -56,7 +55,7 @@ TODO: Add long description of the pod here.
 
   
 #  s.dependency 'MJRefresh'
-  # s.dependency 'Moya'
+#   s.dependency 'Moya'
 #  s.prefix_header_contents = '
 #    #if __has_include(<TestSwiftOC/TestSwiftOC-Swift.h>)
 #    #import <TestSwiftOC/TestSwiftOC-Swift.h>
