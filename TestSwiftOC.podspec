@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'TestSwiftOC'
-  s.version          = '0.9.2.1.002'
+  s.version          = '0.9.2.1.003'
   s.summary          = 'A short description of TestSwiftOC.'
 
 # This description is used to generate tags and improve search results.
