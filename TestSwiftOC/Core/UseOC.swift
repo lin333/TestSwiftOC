@@ -19,6 +19,7 @@ public class UseOC {
     }
 }
 
+@objc(TBCommonChartYAxis)
 open class TBCommonChartYAxis : YAxis {
 
     //边框线是否包含y坐标轴
