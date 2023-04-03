@@ -20,7 +20,7 @@ public class UseOC {
 }
 
 @objc(TBCommonChartYAxis)
-open class TBCommonChartYAxis : YAxis {
+open class TBCommonChartYAxis : NSObject {
 
     //边框线是否包含y坐标轴
     @objc open var bigGrideBorder: Bool = false
