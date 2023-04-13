@@ -7,8 +7,6 @@
 
 #import "LBJOC.h"
 
-//#import <TestSwiftOC/TestSwiftOC-Swift.h>
-
 #if __has_include(<TestSwiftOC/TestSwiftOC-Swift.h>)
     #import <TestSwiftOC/TestSwiftOC-Swift.h>
 #else
@@ -19,7 +17,8 @@
 + (void)loglog {
     NSLog(@"ssss");
     
-    [[[qqqS alloc] init] printtt];;
+    [[GT3Error alloc]init];
+//    [[[qqqS alloc] init] printtt];;
     NSLog(@"sdfsdf");
     
 }
