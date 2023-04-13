@@ -10,7 +10,7 @@
 //#import <TencentOpenAPI/QQApiInterfaceObject.h>
 //#import <TencentOpenAPI/QQApiInterfaceObject.h>
 
-@import GT3Captcha;
+//@import GT3Captcha;
 
 //#import <TencentOpenAPI/TencentOAuth.h>
 

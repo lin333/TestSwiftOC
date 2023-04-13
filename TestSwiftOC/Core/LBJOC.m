@@ -17,7 +17,7 @@
 + (void)loglog {
     NSLog(@"ssss");
     
-    [[GT3Error alloc]init];
+//    [[GT3Error alloc]init];
 //    [[[qqqS alloc] init] printtt];;
     NSLog(@"sdfsdf");
     
