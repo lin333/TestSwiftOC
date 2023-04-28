@@ -39,7 +39,7 @@ TODO: Add long description of the pod here.
 #  s.dependency 'ChartKLineView'
 #  s.dependency 'TBTencentOpenAPI'
 #  s.dependency 'GT3Captcha-iOS'
-  s.dependency 'AFNetworking'
+  # s.dependency 'AFNetworking'
 #  s.source_files = 'TestSwiftOC/Classes/**/*'
   
   # s.dependency 'RJImageLoader'
