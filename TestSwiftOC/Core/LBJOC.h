@@ -6,18 +6,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <UIKit/UIKit.h>
-#import <UIKit/UIKit.h>#import <UIKit/UIKit.h>
-
-
-
-
-//#import <TencentOpenAPI/QQApiInterfaceObject.h>
-//#import <TencentOpenAPI/QQApiInterfaceObject.h>
-
-//@import GT3Captcha;
-
-//#import <TencentOpenAPI/TencentOAuth.h>
 
 
 NS_ASSUME_NONNULL_BEGIN
