@@ -6,6 +6,9 @@
 //
 
 import Foundation
+import Foundation
+import Foundation
+import Foundation
 //import ChartKLineView
 
 public class UseOC {
