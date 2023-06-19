@@ -57,7 +57,7 @@ TODO: Add long description of the pod here.
   end
 
   
-#  s.dependency 'MJRefresh'
+  s.dependency 'MJRefresh'
 #   s.dependency 'Moya'
 #  s.prefix_header_contents = '
 #    #if __has_include(<TestSwiftOC/TestSwiftOC-Swift.h>)
