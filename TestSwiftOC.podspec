@@ -46,6 +46,8 @@ TODO: Add long description of the pod here.
   # s.dependency 'lottie-ios'
 #  s.dependency 'lottie-ios'
   
+  s.default_subspec = 'Core'
+  
   s.subspec 'Core' do |mk|
     mk.source_files = 'TestSwiftOC/Core/*.{h,m,swift}'
   end
@@ -57,7 +59,7 @@ TODO: Add long description of the pod here.
   end
 
   
-  s.dependency 'MJRefresh'
+#  s.dependency 'MJRefresh'
 #   s.dependency 'Moya'
 #  s.prefix_header_contents = '
 #    #if __has_include(<TestSwiftOC/TestSwiftOC-Swift.h>)
