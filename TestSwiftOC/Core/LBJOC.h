@@ -43,24 +43,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 
-
-+ (void)aweiawei086qqqqqqqqq;
-+ (void)aweiawei086qqqqqqqqq222;
-+ (void)aweiawei086qqqqqqqqq333;
-+ (void)aweiawei086qqqqqqqqq444;
-+ (void)aweiawei086qqqqqqqqq555;
-
-+ (void)aweiawei086qqqqqqqqq091;
-
-+ (void)aweiawei086qqqqqqqqq092;
-+ (void)aweiawei086qqqqqqqqq092;
-+ (void)aweiawei086qqqqqqqqq093;
-
-+ (void)aweiawei086qqqqqqqqq094;
-
-+ (void)aweiawei086qqqqqqqqq094dev;
-+ (void)aweiawei086qqqqqqqqq094dev222;
-+ (void)aweiawei086qqqqqqqqq094dev223;
 @end
 
 NS_ASSUME_NONNULL_END
