@@ -1,21 +1,28 @@
 PODS:
-  - TestSwiftOC (0.9.2.1.002):
-    - TestSwiftOC/Core (= 0.9.2.1.002)
-    - TestSwiftOC/MapKit (= 0.9.2.1.002)
-  - TestSwiftOC/Core (0.9.2.1.002)
-  - TestSwiftOC/MapKit (0.9.2.1.002):
-    - TestSwiftOC/Core
+  - TBServiceProtocolKit (9.0.6.0.3)
+  - TestSwiftOC (5.0.1.5):
+    - TestSwiftOC/Core (= 5.0.1.5)
+  - TestSwiftOC/Core (5.0.1.5)
 
 DEPENDENCIES:
+  - TBServiceProtocolKit (from `https://git.tigerbrokers.net/ios/TBServiceProtocolKit/raw/dev/TBServiceProtocolKit.podspec`)
   - TestSwiftOC (from `../`)
 
 EXTERNAL SOURCES:
+  TBServiceProtocolKit:
+    :podspec: https://git.tigerbrokers.net/ios/TBServiceProtocolKit/raw/dev/TBServiceProtocolKit.podspec
   TestSwiftOC:
     :path: "../"
 
-SPEC CHECKSUMS:
-  TestSwiftOC: 57aed6df95359dd811831f747f183b00850b48ee
+CHECKOUT OPTIONS:
+  TBServiceProtocolKit:
+    :commit: 3bd9fc33055820c4cfc6bb0159af6c6530c7d39d
+    :git: https://git.tigerbrokers.net/ios/tbserviceprotocolkit.git
 
-PODFILE CHECKSUM: bffef70b1fb13f42d015f8df5894d9cc37bc31a7
+SPEC CHECKSUMS:
+  TBServiceProtocolKit: 40b5cbc564d1eddc964b96b98960647e216bb730
+  TestSwiftOC: b5b9e462afa772e23ec6f05f98417a0411bbeb94
+
+PODFILE CHECKSUM: 2b9ae4ad05ce2292c9a6ac4375a18c75e4a31a80
 
 COCOAPODS: 1.11.3

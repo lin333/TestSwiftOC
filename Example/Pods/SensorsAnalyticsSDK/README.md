@@ -21,7 +21,14 @@ SensorsAnalytics SDK 是国内第一家开源商用版用户行为采集 SDK，�
 
 ## 基本要求
 
-iOS 8.0 及以上，Xcode 9.0 及以上。
+iOS 9.0 及以上，Xcode 9.0 及以上。
+
+## 推荐版本
+
+| 推荐版本 | 版本链接 |
+| ------ | ------ | 
+| v4.5.7 | https://github.com/sensorsdata/sa-sdk-ios/releases/tag/v4.5.7  |
+| v4.4.5 | https://github.com/sensorsdata/sa-sdk-ios/releases/tag/v4.4.5  |
 
 ## 集成文档
 
@@ -55,9 +62,9 @@ iOS 8.0 及以上，Xcode 9.0 及以上。
 
 ## 新书推荐
 
-| 《数据驱动：从方法到实践》 | 《Android 全埋点解决方案》 | 《iOS 全埋点解决方案》
-| ------ | ------ | ------ |
-| [![《数据驱动：从方法到实践》](https://opensource.sensorsdata.cn/wp-content/uploads/data_driven_book_1.jpg)](https://item.jd.com/12322322.html) | [![《Android 全埋点解决方案》](https://opensource.sensorsdata.cn/wp-content/uploads/Android-全埋点thumbnail_1.png)](https://item.jd.com/12574672.html) | [![《iOS 全埋点解决方案》](https://opensource.sensorsdata.cn/wp-content/uploads/iOS-全埋点thumbnail_1.png)](https://item.jd.com/12867068.html)
+| 《ASM 全埋点开发实战》 | 《数据驱动：从方法到实践》 | 《Android 全埋点解决方案》 | 《iOS 全埋点解决方案》
+| ------ | ------ | ------ | ------ |
+| [![《ASM 全埋点开发实战》](https://opensource.sensorsdata.cn/wp-content/uploads/ASM-全埋点thumbnail_1.jpg)](https://item.jd.com/14058352.html) | [![《数据驱动：从方法到实践》](https://opensource.sensorsdata.cn/wp-content/uploads/data_driven_book_1.jpg)](https://item.jd.com/12322322.html) | [![《Android 全埋点解决方案》](https://opensource.sensorsdata.cn/wp-content/uploads/Android-全埋点thumbnail_1.png)](https://item.jd.com/12574672.html) | [![《iOS 全埋点解决方案》](https://opensource.sensorsdata.cn/wp-content/uploads/iOS-全埋点thumbnail_1.png)](https://item.jd.com/12867068.html)
 
 
 ## 感谢

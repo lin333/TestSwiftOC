@@ -62,6 +62,111 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)tb_developLog:(NSString *)logStr;
 
+// 跳转在线客服
+- (void)tbShellProjectService_openCustomerServiceWithSource:(nullable NSString *)source
+                                                  otherInfo:(nullable NSDictionary *)otherInfo;
+
+
+/// 获取jpush的RegistrationID
+/// jpush是.a库，组件framework二进制会有问题，放到壳工程
+- (NSString *)tb_fetchJpushRegistrationID;
+
+
+// google recaptcha验证流程
+- (void)tb_executeRecaptchaWithSiteKey:(NSString *)siteKey
+                          customAction:(NSString *)customAction
+                                result:(void (^)(NSDictionary * _Nullable error_description, NSString * _Nullable recaptchaToken))result;
+
+/// 判断是否安装了weibo
+- (BOOL)tb_isWeiboAppInstalled;
+
+/// weibo分享图片
+/// - Parameters:
+///   - messageText: 分享文案
+///   - imageData: 分享的图片数据
+- (BOOL)tb_weiboImageShare:(nonnull NSString *)messageText
+                 imageData:(nonnull NSData *)imageData;
+
+
+/// weibo分享带链接的图片
+/// - Parameters:
+///   - messageText: message
+///   - webPageTitle: page title
+///   - imageData: 图片数据
+///   - webpageURL: url链接
+- (BOOL)tb_weiboImageLinkURLShare:(nonnull NSString *)messageText
+                     webPageTitle:(nonnull NSString *)webPageTitle
+                        imageData:(nonnull NSData *)imageData
+                       webpageUrl:(nonnull NSString *)webpageURL;
+
+
+/// 判断相关框架是否存在
+- (BOOL)tb_judgeForWeixin;
+- (BOOL)tb_judgeForWeiBo;
+- (BOOL)tb_judgeForTencent;
+
+- (void)tb_qqShareImage:(nonnull NSData *)optimizeImageData
+       previewImageData:(nonnull NSData *)previewImageData
+                  title:(nonnull NSString *)title
+            description:(nonnull NSString *)description;
+
+- (void)tb_qqShareImage:(nonnull NSURL *)linkUrl
+      optimizeImageData:(nonnull NSData *)optimizeImageData
+                  title:(nonnull NSString *)title
+            description:(nonnull NSString *)description;
+
+- (void)tb_weixinShareImage:(BOOL)isTimeline
+                      title:(nonnull NSString *)title
+                description:(nonnull NSString *)description
+                 thumbImage:(UIImage *)thumbImage
+                  imageData:(nonnull NSData *)imageData;
+
+- (void)tb_weixinShareWXMiniProgram:(BOOL)isTimeline
+                              title:(nonnull NSString *)title
+                        description:(nonnull NSString *)description
+                         webpageUrl:(nonnull NSString *)webpageUrl
+                           userName:(nonnull NSString *)userName
+                           miniPath:(nonnull NSString *)miniPath
+                        hdImageData:(nonnull NSData *)hdImageData;
+
+- (void)tb_weixinShareLink:(BOOL)isTimeline
+                     title:(nonnull NSString *)title
+               description:(nonnull NSString *)description
+                thumbImage:(UIImage *)thumbImage
+                webpageUrl:(nonnull NSString *)webpageUrl
+                   linkURL:(nullable NSString *)linkURL;
+
+/// 微信是否安装
+- (BOOL)tb_isWeixinInstalled;
+/// 打开微信
+- (BOOL)tb_openWXApp;
+
+
+
+//// 一下几个FB相关的方法需要把代码调用放到壳工程来，因为TBForeignThirdPartyKit 需要改成静态库才能调用
+- (void)tbShell_FireBase_logEventWithName:(NSString *)eventName parameters:(nullable NSDictionary *)parameters;
+- (id)tbShell_traceStartWithName:(NSString *)name;
+- (void)tbShell_traceEndWithObject:(id)object;
+- (void)tbShell_increateMetricWithObject:(id)object metric:(NSString *)metric value:(NSInteger)value;
+///// end
+
+/// 壳工程触发flex
+- (void)tbShell_showFlexExplorer;
+
+// 弹出应用评分
+- (void)tbShell_showRateApp;
+
+// 底下几个阿里云相关方法
+- (BOOL)tbShell_ALIYUNEnable;
+- (void)tbShell_ALIYUNLoginorRegister:(UIViewController *)vc;
+// 检查环境是否可用
+- (void)tbShell_ALIYUNCheckEnvAvailableWithCompletion:(void (^)(BOOL isSuccess))completion;
+// 获取验证token
+- (void)tbShell_ALIYUNGetVerifyTokenWithCompletion:(void (^)(BOOL isSuccess, NSString *token))completion;
+- (void)tbShell_ALIYUNgotoAliOneClickLogin;
+
+- (void)tbShell_ALIYUNSetupAliAuthSDK;
+
 @end
 
 NS_ASSUME_NONNULL_END

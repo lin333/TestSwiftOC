@@ -44,6 +44,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (NSString *)tbTools_arriveFromStringForViewController:(UIViewController *)viewController;
 
+/// 归档与解档
+- (void)tbTools_archiveObject:(id)object forKey:(NSString *)key;
+- (id)tbTools_unarchiveObjectForKey:(NSString *)key;
+
 @end
 
 NS_ASSUME_NONNULL_END

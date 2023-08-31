@@ -121,15 +121,17 @@ NS_ASSUME_NONNULL_BEGIN
 // 成功、失败block置空。（外部调用：关闭web验证弹框的时候会调用）
 - (void)tbAccount_captchaUpdateBlockToNil;
 
+- (BOOL)tbAccount_currentAccountIsLinkFA;
 
 - (BOOL)tbAccount_isMSLicense;
 - (BOOL)tbAccount_isAULicense;
-- (BOOL)tbAccount_currentAccountIsLinkFA;
 - (BOOL)tbAccount_isNZLicense;
 - (BOOL)tbAccount_isHKLicense;
 
 - (BOOL)tbAccount_isSGPLicense;
 - (BOOL)tbAccount_isKIWILicense;
+- (BOOL)tbAccount_isTBNZ_AFSL_License;
+- (BOOL)tbAccount_isTFNZLicense;
 
 @end
 

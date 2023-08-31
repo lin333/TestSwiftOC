@@ -19,6 +19,16 @@ NS_ASSUME_NONNULL_BEGIN
 - (NSString *)tbWeb_inviteCodeFromWeb;
 
 - (BOOL)tbWeb_shouldJumptoNative:(NSString *)linkUrl;
+
+
+// TBReCaptchaWebViewController 相关的事件
+- (void)tbWeb_reCaptchaShowWebReCaptcha;
+- (BOOL)tbWeb_reCaptchaISShowingReCaptchaWebPage;//是否正在展示web验证页
+- (void)tbWeb_reCaptchaDismiss;
+// TBReCaptchaWebViewController 相关的事件
+
+
+
 @end
 
 NS_ASSUME_NONNULL_END

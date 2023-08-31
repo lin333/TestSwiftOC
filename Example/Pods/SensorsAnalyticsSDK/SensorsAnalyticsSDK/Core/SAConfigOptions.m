@@ -36,6 +36,7 @@ static const NSUInteger kSASessionMaxInterval = 5 * 60;
 @interface SAConfigOptions ()<NSCopying>
 
 @property (atomic, strong, readwrite) NSMutableArray *encryptors;
+@property (nonatomic, strong) id eventEncryptor;
 @property (nonatomic, assign) BOOL enableTrackPush;
 
 @property (nonatomic, assign) BOOL enableHeatMap;
@@ -45,6 +46,8 @@ static const NSUInteger kSASessionMaxInterval = 5 * 60;
 @property (nonatomic, assign) BOOL enableTrackAppCrash;
 
 @property (nonatomic, assign) BOOL enableEncrypt;
+@property (nonatomic, assign) BOOL enableTransportEncrypt;
+@property (nonatomic, assign) BOOL enableFlushEncrypt;
 @property (nonatomic, copy) void (^saveSecretKey)(SASecretKey * _Nonnull secretKey);
 @property (nonatomic, copy) SASecretKey * _Nonnull (^loadSecretKey)(void);
 
@@ -163,7 +166,10 @@ static const NSUInteger kSASessionMaxInterval = 5 * 60;
     options.disableRandomTimeRequestRemoteConfig = self.disableRandomTimeRequestRemoteConfig;
     // 加密
     options.encryptors = self.encryptors;
+    options.eventEncryptor = self.eventEncryptor;
     options.enableEncrypt = self.enableEncrypt;
+    options.enableTransportEncrypt = self.enableTransportEncrypt;
+    options.enableFlushEncrypt = self.enableFlushEncrypt;
     options.saveSecretKey = self.saveSecretKey;
     options.loadSecretKey = self.loadSecretKey;
     // 全埋点

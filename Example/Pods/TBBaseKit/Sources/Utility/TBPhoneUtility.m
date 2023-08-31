@@ -97,7 +97,7 @@
         }];
         [alertVC addAction:action];
     }
-    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:TBResourcesLocalizedString(@"mobile_ios_common_cancel", nil) style:UIAlertActionStyleCancel handler:nil];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:TBResourcesLocalizedString(@"mobile_comm_common_cancel", nil) style:UIAlertActionStyleCancel handler:nil];
     [alertVC addAction:cancelAction];
     [vc presentViewController:alertVC animated:YES completion:nil];
 }

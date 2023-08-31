@@ -25,6 +25,11 @@
 #import "SAConstants.h"
 #import "SAConstants+Private.h"
 #import "SensorsAnalyticsSDK+Private.h"
+#import "SACoreResources.h"
+
+#if __has_include("SACoreResources+English.h")
+#import "SACoreResources+English.h"
+#endif
 
 #pragma mark - Track Timer
 NSString *const kSAEventIdSuffix = @"_SATimer";
@@ -126,7 +131,7 @@ NSString * const kSAProfileIncrement = @"profile_increment";
 #pragma mark - bridge name
 NSString * const SA_SCRIPT_MESSAGE_HANDLER_NAME = @"sensorsdataNativeTracker";
 
-NSSet* sensorsdata_reserved_properties() {
+NSSet* sensorsdata_reserved_properties(void) {
     return [NSSet setWithObjects:@"date", @"datetime", @"distinct_id", @"event", @"events", @"first_id", @"id", @"original_id", @"properties", @"second_id", @"time", @"user_id", @"users", nil];
 }
 
@@ -144,22 +149,21 @@ void sensorsdata_dispatch_safe_sync(dispatch_queue_t queue,DISPATCH_NOESCAPE dis
 
 #pragma mark - Localization
 NSString* sensorsdata_localized_string(NSString* key, NSString* value) {
-    static NSBundle *languageBundle = nil;
+    static NSDictionary *languageResources = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        // 获取语言资源的 Bundle
-        NSBundle *sensorsBundle = [NSBundle bundleWithPath:[[NSBundle bundleForClass:[SensorsAnalyticsSDK class]] pathForResource:@"SensorsAnalyticsSDK" ofType:@"bundle"]];
-        NSString *path = [sensorsBundle pathForResource:@"zh-Hans" ofType:@"lproj"];
-        if (path) {
-            languageBundle = [NSBundle bundleWithPath:path];
-        }
+
+#if __has_include("SACoreResources+English.h")
+        // 获取英文资源
+        languageResources = [SACoreResources englishLanguageResources];
+#else
+        // 默认加载中文资源
+        languageResources = [SACoreResources defaultLanguageResources];
+#endif
+
     });
-    
-    NSString *result = value;
-    if (languageBundle) {
-        result = [languageBundle localizedStringForKey:key value:value table:nil];
-    }
-    return result;
+
+    return languageResources[key] ?: value;
 }
 
 #pragma mark - SF related notifications
@@ -188,7 +192,7 @@ NSString * const kSAEventNameAppPageLeave = @"$AppPageLeave";
 
 //event name、property key、value max length
 NSInteger kSAEventNameMaxLength = 100;
-NSInteger kSAPropertyValueMaxLength = 1024;
+NSInteger kSAPropertyValueMaxLength = 8192;
 
 #pragma mark - SA Visualized
 /// 埋点校验中，$WebClick 匹配可视化全埋点的事件名（集合）
@@ -207,3 +211,23 @@ SALimitKey const SALimitKeyCarrier = @"SALimitKeyCarrier";
 
 /// is instant event
 NSString * const kSAInstantEventKey = @"is_instant_event";
+
+//flush related keys
+NSString * const kSAEncryptRecordKeyEKey = @"ekey";
+NSString * const kSAEncryptRecordKeyPayloads = @"payloads";
+NSString * const kSAEncryptRecordKeyPayload = @"payload";
+NSString * const kSAEncryptRecordKeyFlushTime = @"flush_time";
+NSString * const kSAEncryptRecordKeyPKV = @"pkv";
+NSString * const kSAFlushBodyKeyData = @"data_list";
+NSString * const kSAFlushBodyKeyGzip = @"gzip";
+NSInteger const kSAFlushGzipCodePlainText = 1;
+NSInteger const kSAFlushGzipCodeEncrypt = 9;
+NSInteger const kSAFlushGzipCodeTransportEncrypt = 13;
+
+//remote config
+NSString * const kSDKConfigKey = @"SASDKConfig";
+NSString * const kRequestRemoteConfigRandomTimeKey = @"SARequestRemoteConfigRandomTime";
+NSString * const kRandomTimeKey = @"randomTime";
+NSString * const kStartDeviceTimeKey = @"startDeviceTime";
+NSString * const kSARemoteConfigSupportTransportEncryptKey = @"supportTransportEncrypt";
+NSString * const kSARemoteConfigConfigsKey = @"configs";

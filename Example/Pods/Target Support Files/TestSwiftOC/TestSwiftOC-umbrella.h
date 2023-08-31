@@ -12,7 +12,6 @@
 
 #import "LBJOC.h"
 #import "TestSwiftOC.h"
-#import "LBJOCTarget.h"
 
 FOUNDATION_EXPORT double TestSwiftOCVersionNumber;
 FOUNDATION_EXPORT const unsigned char TestSwiftOCVersionString[];

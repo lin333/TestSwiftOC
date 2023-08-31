@@ -18,10 +18,6 @@
 // limitations under the License.
 //
 
-#if ! __has_feature(objc_arc)
-#error This file must be compiled with ARC. Either turn on ARC for the project or use -fobjc-arc flag on this file.
-#endif
-
 #import <Foundation/Foundation.h>
 
 NS_ASSUME_NONNULL_BEGIN
@@ -41,7 +37,7 @@ typedef NS_ENUM(int, SAEventRecordStatus) {
 @property (nonatomic, getter=isEncrypted) BOOL encrypted;
 @property (nonatomic, assign) BOOL isInstantEvent;
 
-@property (nonatomic, copy, readonly) NSDictionary *event;
+@property (nonatomic, strong) NSMutableDictionary *event;
 
 /// 通过 event 初始化方法
 /// 主要是在 track 事件的时候使用

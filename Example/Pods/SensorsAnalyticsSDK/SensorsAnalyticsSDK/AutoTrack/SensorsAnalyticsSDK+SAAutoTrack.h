@@ -77,7 +77,7 @@ NS_ASSUME_NONNULL_BEGIN
  *
  * @param aClass View 对应的 Class
  */
-- (void)ignoreViewType:(Class)aClass;
+- (void)ignoreViewType:(Class)aClass NS_EXTENSION_UNAVAILABLE("AutoTrack not supported for iOS extensions.");
 
 /**
  * @abstract
@@ -95,7 +95,7 @@ NS_ASSUME_NONNULL_BEGIN
  *
  * @param controllers   controller ‘字符串’数组
  */
-- (void)ignoreAutoTrackViewControllers:(NSArray<NSString *> *)controllers;
+- (void)ignoreAutoTrackViewControllers:(NSArray<NSString *> *)controllers NS_EXTENSION_UNAVAILABLE("AutoTrack not supported for iOS extensions.");
 
 /**
  * @abstract
@@ -156,7 +156,7 @@ NS_ASSUME_NONNULL_BEGIN
  *   https://sensorsdata.cn/manual/ios_sdk.html
  * 该功能默认关闭
  */
-- (void)enableAutoTrack:(SensorsAnalyticsAutoTrackEventType)eventType __attribute__((deprecated("已过时，请参考 SAConfigOptions 类的 autoTrackEventType")));
+- (void)enableAutoTrack:(SensorsAnalyticsAutoTrackEventType)eventType __attribute__((deprecated("已过时，请参考 SAConfigOptions 类的 autoTrackEventType"))) NS_EXTENSION_UNAVAILABLE("AutoTrack not supported for iOS extensions.");
 
 @end
 
@@ -191,6 +191,64 @@ NS_ASSUME_NONNULL_BEGIN
  * 该功能默认关闭
  */
 @property (nonatomic) SensorsAnalyticsAutoTrackEventType autoTrackEventType API_UNAVAILABLE(macos);
+
+@end
+
+
+/// Referrer category
+@interface SensorsAnalyticsSDK (SAReferrer)
+
+
+/**
+ * @abstract
+ * 获取 LastScreenUrl
+ *
+ * @return LastScreenUrl
+ */
+- (NSString *)getLastScreenUrl API_UNAVAILABLE(macos);
+
+/**
+ * @abstract
+ * 获取 currentScreenUrl
+ *
+ * @return currentScreenUrl
+ */
+- (NSString *)getCurrentScreenUrl API_UNAVAILABLE(macos);
+
+/**
+ * @abstract
+ * 获取 LastScreenTrackProperties
+ *
+ * @return LastScreenTrackProperties
+ */
+- (NSDictionary *)getLastScreenTrackProperties API_UNAVAILABLE(macos);
+
+/**
+ * @abstract
+ * App 退出或进到后台时清空 referrer，默认情况下不清空
+ */
+- (void)clearReferrerWhenAppEnd API_UNAVAILABLE(macos);
+
+@end
+
+/// ignore AppClick or AppViewScreen category
+@interface SensorsAnalyticsSDK (SAAutoTrackIgnore)
+
+/// ignore AppClick on an array of view classes
+/// - Parameter views: view classes
+- (void)ignoreAppClickOnViews:(NSArray<Class>*)views;
+
+/// ignore AppClick on an array of view controller classes
+/// - Parameter viewControllers: view controller classes
+- (void)ignoreAppClickOnViewControllers:(NSArray<Class>*)viewControllers;
+
+/// ignore AppViewScreen on an array of view controller classes
+/// - Parameter viewControllers: view controller classes
+- (void)ignoreAppViewScreenOnViewControllers:(NSArray<Class>*)viewControllers;
+
+/// ignore AppClick and AppViewScreen on an array of view controller classes
+/// - Parameter viewControllers: view controller classes
+- (void)ignoreAppClickAndViewScreenOnViewControllers:(NSArray<Class>*)viewControllers;
 
 @end
 

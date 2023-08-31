@@ -275,6 +275,9 @@
 - (UIImage *)imageFromView
 {
     CGSize size = self.size;
+    if (size.width == 0 || size.height == 0) {
+        return nil;
+    }
     UIGraphicsBeginImageContextWithOptions(size, NO, [UIScreen mainScreen].scale);
     
     [self.layer renderInContext:UIGraphicsGetCurrentContext()];
@@ -288,6 +291,9 @@
 - (UIImage *)imageFromViewWithLowResolution
 {
     CGSize size = self.size;
+    if (size.width == 0 || size.height == 0) {
+        return nil;
+    }
     UIGraphicsBeginImageContextWithOptions(size, NO, 0.5);
     [self.layer renderInContext:UIGraphicsGetCurrentContext()];
     UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
@@ -300,6 +306,9 @@
 - (UIImage *)imageFromViewInRect:(CGRect)rect
 {
     CGSize size = rect.size;
+    if (size.width == 0 || size.height == 0) {
+        return nil;
+    }
     UIGraphicsBeginImageContextWithOptions(size, NO, [UIScreen mainScreen].scale);
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGContextTranslateCTM(context, -rect.origin.x, -rect.origin.y);
@@ -315,6 +324,9 @@
 - (UIImage *)imageFromBlurView
 {
     CGSize size = self.size;
+    if (size.width == 0 || size.height == 0) {
+        return nil;
+    }
     UIGraphicsBeginImageContextWithOptions(size, NO, [UIScreen mainScreen].scale);
 
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7)
@@ -335,6 +347,9 @@
 - (UIImage *)imageFromViewWithLowResolutionInRect:(CGRect)rect
 {
     CGSize size = rect.size;
+    if (size.width == 0 || size.height == 0) {
+        return nil;
+    }
     UIGraphicsBeginImageContextWithOptions(size, NO, 0.5);
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGContextTranslateCTM(context, -rect.origin.x, -rect.origin.y);

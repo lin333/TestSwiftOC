@@ -25,14 +25,9 @@
 #import "SAEventRecord.h"
 #import "SAJSONUtil.h"
 #import "SAValidator.h"
+#import "SAConstants+Private.h"
 
-static NSString * const SAEncryptRecordKeyEKey = @"ekey";
-static NSString * const SAEncryptRecordKeyPayloads = @"payloads";
-static NSString * const SAEncryptRecordKeyPayload = @"payload";
-
-@implementation SAEventRecord {
-    NSMutableDictionary *_event;
-}
+@implementation SAEventRecord
 
 static long recordIndex = 0;
 
@@ -42,7 +37,7 @@ static long recordIndex = 0;
         _event = [event mutableCopy];
         _type = type;
 
-        _encrypted = _event[SAEncryptRecordKeyEKey] != nil;
+        _encrypted = _event[kSAEncryptRecordKeyEKey] != nil;
 
         // 事件数据插入自定义的 ID 自增，这个 ID 在入库之前有效，入库之后数据库会生成新的 ID
         recordIndex++;
@@ -57,7 +52,7 @@ static long recordIndex = 0;
         NSMutableDictionary *eventDic = [SAJSONUtil JSONObjectWithString:content options:NSJSONReadingMutableContainers];
         if (eventDic) {
             _event = eventDic;
-            _encrypted = _event[SAEncryptRecordKeyEKey] != nil;
+            _encrypted = _event[kSAEncryptRecordKeyEKey] != nil;
         }
     }
     return self;
@@ -84,7 +79,7 @@ static long recordIndex = 0;
 }
 
 - (NSString *)ekey {
-    return _event[SAEncryptRecordKeyEKey];
+    return _event[kSAEncryptRecordKeyEKey];
 }
 
 - (void)setSecretObject:(NSDictionary *)obj {
@@ -98,18 +93,18 @@ static long recordIndex = 0;
 }
 
 - (void)removePayload {
-    if (!_event[SAEncryptRecordKeyPayload]) {
+    if (!_event[kSAEncryptRecordKeyPayload]) {
         return;
     }
-    _event[SAEncryptRecordKeyPayloads] = [NSMutableArray arrayWithObject:_event[SAEncryptRecordKeyPayload]];
-    [_event removeObjectForKey:SAEncryptRecordKeyPayload];
+    _event[kSAEncryptRecordKeyPayloads] = [NSMutableArray arrayWithObject:_event[kSAEncryptRecordKeyPayload]];
+    [_event removeObjectForKey:kSAEncryptRecordKeyPayload];
 }
 
 - (BOOL)mergeSameEKeyRecord:(SAEventRecord *)record {
     if (![self.ekey isEqualToString:record.ekey]) {
         return NO;
     }
-    [(NSMutableArray *)_event[SAEncryptRecordKeyPayloads] addObject:record.event[SAEncryptRecordKeyPayload]];
+    [(NSMutableArray *)_event[kSAEncryptRecordKeyPayloads] addObject:record.event[kSAEncryptRecordKeyPayload]];
     return YES;
 }
 

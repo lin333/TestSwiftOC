@@ -1,6 +1,6 @@
 {
   "name": "TestSwiftOC",
-  "version": "0.9.2.1.002",
+  "version": "5.0.1.5",
   "summary": "A short description of TestSwiftOC.",
   "description": "TODO: Add long description of the pod here.",
   "homepage": "https://github.com/lin333/TestSwiftOC",
@@ -16,14 +16,14 @@
     "branch": "dev"
   },
   "platforms": {
-    "ios": "10.0"
+    "ios": "12.0"
   },
+  "pod_target_xcconfig": {
+    "DEFINES_MODULE": "YES"
+  },
+  "swift_versions": "5.0",
   "resources": "TestSwiftOC/**/*.{,png,bundle,storyboard,xib,xcassets}",
-  "dependencies": {
-    "ChartKLineView": [
-
-    ]
-  },
+  "default_subspecs": "Core",
   "subspecs": [
     {
       "name": "Core",
@@ -39,5 +39,6 @@
         ]
       }
     }
-  ]
+  ],
+  "swift_version": "5.0"
 }

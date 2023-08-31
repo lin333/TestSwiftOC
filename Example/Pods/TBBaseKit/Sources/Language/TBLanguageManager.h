@@ -13,6 +13,12 @@ typedef NS_ENUM(NSUInteger, TBLanguageType) {
     TBLanguageTypeZhHans,   //简体中文
     TBLanguageTypeZhHant,   //繁体中文
     TBLanguageTypeEnglish,  //英文
+    
+    TBLanguageTypeVI_VN,       ///< 越南语
+    TBLanguageTypeTH_TH,       ///< 泰语
+    TBLanguageTypeID_ID,       ///< 印度尼西亚语
+    TBLanguageTypeES_ES,       ///< 西班牙语
+    TBLanguageTypePT_PT,       ///< 葡萄牙语
 };
 
 #define TBLocalizedString(key, comment) \

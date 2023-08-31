@@ -32,6 +32,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (UIViewController *)tbAuth_getAccountSettingViewController;
 
+
+/// 检测阿里云一键登录是否可用
+- (void)tbAuth_checkAliEnvAvailableWithCompletion:(void (^)(BOOL isSuccess))completion;
+
+/// 跳转阿里云一键登录
+- (void)tbAuth_gotoAliOneClickLogin;
+
 @end
 
 NS_ASSUME_NONNULL_END

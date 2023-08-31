@@ -68,20 +68,12 @@ static char imageSourceURLKey;
 
 - (UIImage *)imageScale:(CGSize)newSize
 {
-    // 创建一个bitmap的context
-    // 并把它设置成为当前正在使用的context
-    UIGraphicsBeginImageContext(newSize);
-    
-    // 绘制改变大小的图片
-    [self drawInRect:CGRectMake(0, 0, newSize.width, newSize.height)];
-    
-    // 从当前context中创建一个改变大小后的图片
-    UIImage* scaledImage = UIGraphicsGetImageFromCurrentImageContext();
-    
-    // 使当前的context出堆栈
-    UIGraphicsEndImageContext();
-    
-    // 返回新的改变大小后的图片
+    // UIGraphicsBeginImageContext iOS17废弃, 如果Size.height 或者width为0会崩溃
+    UIGraphicsImageRendererFormat *format = [[UIGraphicsImageRendererFormat alloc] init];
+    UIGraphicsImageRenderer *renderer = [[UIGraphicsImageRenderer alloc] initWithSize:newSize format:format];
+    UIImage *scaledImage = [renderer imageWithActions:^(UIGraphicsImageRendererContext * _Nonnull rendererContext) {
+        
+    }];
     return scaledImage;
 }
 
@@ -125,6 +117,9 @@ static char imageSourceURLKey;
             break;
     }
     
+    if (rect.size.width == 0 || rect.size.height == 0) {
+        return nil;
+    }
     UIGraphicsBeginImageContext(rect.size);
     CGContextRef context = UIGraphicsGetCurrentContext();
     //做CTM变换
@@ -146,18 +141,12 @@ static char imageSourceURLKey;
     return [self imageWithColor:color size:CGSizeMake(1.0, 1.0)];
 }
 
-+ (UIImage *)imageWithColor:(UIColor *)color size:(CGSize)size
-{
-//	UIGraphicsBeginImageContextWithOptions(CGSizeMake(1, 1), NO, 0.0f);
-//	UIBezierPath* roundedRect = [UIBezierPath bezierPathWithRect:CGRectMake(0, 0, 1, 1)];
-//    [color setFill];
-//    [roundedRect fill];
-//    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
-//    UIGraphicsEndImageContext();
-//    return [image stretchableImageByCenter];
-    
++ (UIImage *)imageWithColor:(UIColor *)color size:(CGSize)size {
     CGRect rect = CGRectZero;
     rect.size = size;
+    if (rect.size.width == 0 || rect.size.height == 0) {
+        return nil;
+    }
     UIGraphicsBeginImageContext(rect.size);
     CGContextRef context = UIGraphicsGetCurrentContext();
     
@@ -174,7 +163,9 @@ static char imageSourceURLKey;
 + (UIImage *)imageWithColor:(UIColor *)color size:(CGSize)size radius:(CGFloat)radius {
     CGRect contentRect = CGRectZero;
     contentRect.size = size;
-    
+    if (size.width == 0 || size.height == 0) {
+        return nil;
+    }
     UIGraphicsBeginImageContextWithOptions(size, NO, UIScreen.mainScreen.scale);
     CGContextRef context = UIGraphicsGetCurrentContext();
     
@@ -198,7 +189,9 @@ static char imageSourceURLKey;
     CGSize textSize = [text sizeWithAttributes:dict];
     
     // 绘制上下文
-//    UIGraphicsBeginImageContext(self.size);
+    if (self.size.width == 0 || self.size.height == 0) {
+        return nil;
+    }
     UIGraphicsBeginImageContextWithOptions(self.size, NO, [UIScreen mainScreen].scale);
     
     [self drawInRect:CGRectMake(0, 0, self.size.width, self.size.height)];
@@ -223,7 +216,9 @@ static char imageSourceURLKey;
                                     contentRadius:(CGFloat)contentRadius
                                       imageRadius:(CGFloat)imageRadius
 {
-    
+    if (contentSize.width == 0 || contentSize.height == 0) {
+        return nil;
+    }
     UIGraphicsBeginImageContextWithOptions(contentSize, NO, UIScreen.mainScreen.scale);
     CGContextRef context = UIGraphicsGetCurrentContext();
     
@@ -243,7 +238,9 @@ static char imageSourceURLKey;
 }
 
 + (UIImage *)lineWidthIconWithBackGroundColor:(UIColor *)backGroundColor itemColor:(UIColor *)itemColor borderColor:(UIColor *)borderColor contentSize:(CGSize)contentSize itemHeight:(CGFloat)itemHeight radius:(CGFloat)radius {
-
+    if (contentSize.width == 0 || contentSize.height == 0) {
+        return nil;
+    }
     UIGraphicsBeginImageContextWithOptions(contentSize, NO, UIScreen.mainScreen.scale);
     CGContextRef context = UIGraphicsGetCurrentContext();
     
@@ -262,7 +259,9 @@ static char imageSourceURLKey;
 + (UIImage *)lineStyleIconWithBakcGroundColor:(UIColor *)backGroundColor borderColor:(UIColor *)borderColor lineColor:(UIColor *)lineColor lineWidth:(CGFloat)lineWidth contentSize:(CGSize)contentSize radius:(CGFloat)radius dashEnable:(BOOL)dashEnable leftArrowEnable:(BOOL)leftArrowEnable rightArrowEnable:(BOOL)rightArrowEnable {
     CGRect contentRect = CGRectZero;
     contentRect.size = contentSize;
-    
+    if (contentSize.width == 0 || contentSize.height == 0) {
+        return nil;
+    }
     UIGraphicsBeginImageContextWithOptions(contentSize, NO, UIScreen.mainScreen.scale);
     CGContextRef context = UIGraphicsGetCurrentContext();
 
@@ -349,6 +348,9 @@ static char imageSourceURLKey;
     for (UIColor *c in colors) {
         [array addObject:(id)c.CGColor];
     }
+    if (imgSize.width == 0 || imgSize.height == 0) {
+        return nil;
+    }
     UIGraphicsBeginImageContextWithOptions(imgSize, YES, 1);
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGContextSaveGState(context);
@@ -367,6 +369,9 @@ static char imageSourceURLKey;
 }
 
 + (UIImage *)borderIconWithBackGroundColor:(UIColor *)backGroundColor borderColor:(UIColor *)borderColor contentSize:(CGSize)contentSize radius:(CGFloat)radius {
+    if (contentSize.width == 0 || contentSize.height == 0) {
+        return nil;
+    }
     UIGraphicsBeginImageContextWithOptions(contentSize, NO, UIScreen.mainScreen.scale);
     CGContextRef context = UIGraphicsGetCurrentContext();
     
@@ -393,6 +398,10 @@ static char imageSourceURLKey;
             height = maxSide;
         }
         
+        if (width == 0 || height == 0) {
+            return nil;
+        }
+        
         UIGraphicsBeginImageContext(CGSizeMake(width, height));
         
         // 绘制改变大小的图片
@@ -414,6 +423,9 @@ static char imageSourceURLKey;
     UIImage *original = self;
     CGRect frame = CGRectMake(0, 0, original.size.width, original.size.height);
     // 开始一个Image的上下文
+    if (original.size.width == 0 || original.size.height == 0) {
+        return nil;
+    }
     UIGraphicsBeginImageContextWithOptions(original.size, NO, [UIScreen mainScreen].scale);
     // 添加圆角
     [[UIBezierPath bezierPathWithRoundedRect:frame
@@ -527,6 +539,9 @@ void addRoundedRectToPath(CGContextRef context, CGRect rect, float ovalWidth, fl
 
 - (UIImage *)imageByApplyingAlpha:(CGFloat)alpha
 {
+    if (self.size.width == 0 || self.size.height == 0) {
+        return nil;
+    }
     UIGraphicsBeginImageContextWithOptions(self.size, NO, 0.0f);
     
     CGContextRef ctx = UIGraphicsGetCurrentContext();
@@ -640,7 +655,9 @@ void addRoundedRectToPath(CGContextRef context, CGRect rect, float ovalWidth, fl
         CGFloat imgHeight = sizeW * CGImageGetHeight(img.CGImage) / CGImageGetWidth(img.CGImage);
         sizeH += imgHeight;
     }
-    
+    if (sizeW == 0 || sizeH == 0) {
+        return nil;
+    }
     UIGraphicsBeginImageContextWithOptions(CGSizeMake(sizeW, sizeH), YES, screenScale);
     CGFloat location_y = 0;
     for (int i = 0 ; i < imageArray.count; i++) {

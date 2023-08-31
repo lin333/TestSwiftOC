@@ -50,6 +50,9 @@ NS_ASSUME_NONNULL_BEGIN
 /// 获取关于内部version描述
 - (NSString *)tbMe_fetchVersion;
 
+/// 跳转到新功能介绍页面
+- (void)tbMe_gotoNewFeaturePage;
+
 /*
  首页需要获取奖励中心，活动中心和邀请好友的数据
  dataDict的key分别为PromotionsRewards，CampaignCenter，InviteFriends

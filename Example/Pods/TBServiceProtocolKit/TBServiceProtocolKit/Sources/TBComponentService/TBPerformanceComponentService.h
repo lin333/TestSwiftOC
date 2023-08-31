@@ -22,6 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (NSInteger)tb_getTBLogLevel;
 
+- (void)tbPerformance_crashlyticsLog:(NSString *)msg;
 
 @end
 

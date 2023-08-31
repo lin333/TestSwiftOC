@@ -33,6 +33,7 @@
 #import "UIViewController+SAAutoTrack.h"
 #import "SAModuleManager.h"
 #import "SALog.h"
+#import "SAUIProperties.h"
 
 @interface SAAppClickTracker ()
 
@@ -136,20 +137,31 @@
 }
 
 - (void)ignoreViewType:(Class)aClass {
+    if (!aClass) {
+        return;
+    }
     [_ignoredViewTypeList addObject:aClass];
 }
 
 - (BOOL)isViewTypeIgnored:(Class)aClass {
-    for (Class obj in _ignoredViewTypeList) {
-        if ([aClass isSubclassOfClass:obj]) {
+    for (Class tempClass in self.ignoredViewTypeList) {
+        if ([aClass isSubclassOfClass:tempClass]) {
             return YES;
         }
     }
     return NO;
 }
 
+- (void)ignoreAppClickOnViews:(NSArray<Class> *)views {
+    if (![views isKindOfClass:[NSArray class]]) {
+        return;
+    }
+    [self.ignoredViewTypeList addObjectsFromArray:views];
+}
+
 - (BOOL)isIgnoreEventWithView:(UIView *)view {
-    return self.isIgnored || [self isViewTypeIgnored:[view class]];
+    UIViewController *viewController = [SAUIProperties findNextViewControllerByResponder:view];
+    return self.isIgnored || [self isViewTypeIgnored:[view class]] || [self isViewControllerIgnored:viewController];
 }
 
 #pragma mark – Private Methods
@@ -161,7 +173,7 @@
 }
 
 - (void)autoTrackEventWithView:(UIView *)view properties:(NSDictionary<NSString *, id> * _Nullable)properties {
-    if (self.isIgnored) {
+    if (self.isIgnored || view.sensorsdata_isIgnored) {
         return;
     }
 

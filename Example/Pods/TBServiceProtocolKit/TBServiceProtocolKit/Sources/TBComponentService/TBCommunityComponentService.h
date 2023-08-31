@@ -22,11 +22,9 @@ typedef enum : NSUInteger {
     TBPersonalManagerBoolPropertyType_showNewbieGuide,
     TBPersonalManagerBoolPropertyType_showNewbieGiftGuide,
     TBPersonalManagerBoolPropertyType_changeMembershipShareBgView,
-    TBPersonalManagerBoolPropertyType_showMyselfMembershipLogo,
+    TBPersonalManagerBoolPropertyType_showMyselfMembershipLogo,    
 } TBPersonalManagerBoolPropertyType;
 
-
-@class TBFeedDataModel;
 
 @protocol TBCommunityComponentService <NSObject>
 
@@ -61,12 +59,25 @@ typedef enum : NSUInteger {
 
 - (void)tbCommunity_autoRefreshUserStatus;
 
+- (void)tbCommunity_refreshUserStatus:(void(^)(BOOL isFinished))completed
+                              failure:(void(^)(NSString * message))failure;
+
+- (void)tbCommunity_notifyRewardRead:(void(^)(id result))success
+                             failure:(void(^)(NSString * message))failure;
+
+- (void)tbCommunity_statisticsShareWithObjectId:(NSString *)objectId
+                                       itemType:(NSInteger)type
+                               destPlatformType:(NSInteger)platformType
+                                 withCompletion:(void(^)(NSError *error))block;
+
 - (void)tbCommunity_cleanAuthStatus;
 // 通过urlstring打开发帖编辑器页面
 - (void)tbCommunity_gotoCreatePostWithString:(NSString *)urlStr;
 
 // 通过发帖类型和参数字典进入发帖页面
 - (void)tbCommunity_gotoCreatePostWithType:(NSInteger)type param:(NSDictionary *)dict;
+
+- (UIViewController *)tbCommunity_openCreateVCWithDict:(NSDictionary *)dict;
 
 - (void)tbCommunity_gotoPostDetail:(NSString *)postId;
 
@@ -115,6 +126,11 @@ typedef enum : NSUInteger {
 // 跳转到学院视频
 - (void)tbCommunity_gotoCollegeVideoWithGID:(id)gid videoId:videoId fromAD:(BOOL)fromAD;
 
+// 跳转到学院视频 or 栏目视频详情页面
+- (void)tbCommunity_gotoCollegeVideoWithGID:(id)gid
+                                    videoId:videoId
+                                 isPrograma:(BOOL)flag
+                                     fromAD:(BOOL)fromAD;
 /// 跳转换头像界面
 - (void)tbCommunity_goTochangeUserAvator;
 
@@ -131,8 +147,12 @@ typedef enum : NSUInteger {
 
 - (void)tbCommunity_openIPODetailWithLiveId:(NSString *)liveId type:(NSNumber *)type fromAD:(BOOL)fromAD;
 
+// 获取直播状态
+- (void)tbCommunity_fetchLiveStatusWithLiveId:(NSString *)liveId completion:(void(^)(BOOL isLive))completion;
+
 // 打开视频详情页
 - (void)tbCommunity_openVideoDetailWithId:(NSString *)Id;
+- (void)tbCommunity_openVideoDetailWithId:(NSString *)Id videoId:(NSString *)videoId;
 
 /// 跳转搜索
 /// @param keyword 关键字
@@ -170,6 +190,13 @@ typedef enum : NSUInteger {
 // 会员是否为贵宾会员
 - (BOOL)tbCommunity_isMemberSvip;
 
+
+- (void)tbCommunity_fetchTigerGptData:(void(^)(BOOL show))completion;
+
+/// 获取晒单（持仓分享、订单分享）需要关联的主题信息
+/// - Parameter completion: 成功回调，themeDictionary字典结构为：@{@"themeId": , @"themeName": , @"themeImage": }
+- (void)tbCommunity_fetchOrderShareThemeData:(void(^)(NSDictionary *themeDictionary))completion;
+
 /// 跳转到公告详情
 - (void)tbCommunity_gotoAnnouncementWithId:(NSInteger)Id
                                       type:(NSString *)type
@@ -199,6 +226,7 @@ typedef enum : NSUInteger {
 - (void)tbCommunity_changeNoticeContentLanguageSettingType:(NSInteger)settingType;
 
 - (void)tbCommunity_resetNewsContentLanguageSettingType;
+- (void)tbCommunity_resetNoticeContentLanguageSettingType;
 
 - (NSInteger)tbCommunity_getCurrentNewsContentLanguageSettingType;
 
@@ -229,13 +257,17 @@ typedef enum : NSUInteger {
 // 社区用户信息，昵称，头像等
 - (NSDictionary *)tbCommunity_getUserInfoDict;
 
+// 获取用户昵称
+- (NSString *)tbCommunity_getNickname;
+
 /// 获取实名
 - (void)tbCommunity_checkRealNameInfo:(BOOL)needPop withSuccess:(void (^)(void))success;
 
 /// 是否实名认证
 - (BOOL)tbCommunity_isRealNameVerification;
 
-- (void)tbCommunity_gotoThemeWithThemeId:(id)themeId type:(NSInteger)type;
+/// 跳转主题详情页
+- (void)tbCommunity_gotoThemeWithThemeId:(id)themeId type:(NSInteger)type tab:(nullable NSString *)tab arriveFrom:(nullable NSString *)arriveFrom;
 
 // 基金详情页 获取新帖tab的vc方法
 - (id)tbCommunity_fundMallPostViewController:(NSString *)symbol fundName:(NSString *)fundName;
@@ -251,6 +283,9 @@ typedef enum : NSUInteger {
 // 邀请文案
 - (NSString *)tbCommunity_invitationText;
 
+- (void)tbCommunity_fetchCollegeInfo:(void(^)(id result))success
+                             failure:(void(^)(NSString * message))failure;
+
 - (NSArray *)tbCommunity_getNewsContentAllLanguageSetting;
 
 - (NSArray *)tbCommunity_getNoticeContentAllLanguageSetting;
@@ -262,6 +297,7 @@ typedef enum : NSUInteger {
 - (NSString *)tbCommunity_getContentLanguageSettingValueWithModel:(id)model;
 
 - (NSInteger)tbCommunity_getContentLanguageSettingTypeWithModel:(id)model;
+
 //ipo分享
 - (void)tbCommunity_showIPOShareCard:(id)positionItem;
 
@@ -347,9 +383,6 @@ typedef enum : NSUInteger {
 
 - (void)tbCommunity_gotoSubPageVC:(UIViewController *)selectedVC index:(NSInteger)index;
 
-//获取用户邀请码
-- (void)tbCommunity_fetchInviteCode:(void(^)(id result))success
-                   failure:(void(^)(NSString * message))failure;
 
 //通过用户id判断是不是用户自身
 - (BOOL)tbCommunity_isMyself:(int64_t)userId;
@@ -417,10 +450,6 @@ typedef enum : NSUInteger {
                                        success:(void (^)(NSArray *articles))success
                                        failure:(void(^)(NSString * message))failure;
 
-// 火山引擎
-- (void)tbCommunity_stopOpenGLESActivity;
-- (void)tbCommunity_startOpenGLESActivity;
-
 // 向服务器注册idfa，用于ASO广告区分用户
 - (void)tbCommunity_registerIDFA;
 
@@ -453,17 +482,158 @@ typedef enum : NSUInteger {
                           success:(void(^)(id result))success
                           failure:(void(^)(NSString * message))failure;
 
-- (void)tbCommunity_requestRspGuideWithSuccess:(void(^)(NSArray *list, TBFeedDataModel *data))success
-                           failure:(void(^)(NSError *error))failure;
+- (void)tbCommunity_requestRspGuideWithSuccess:(void(^)(NSArray *list))success
+                                       failure:(void(^)(NSError *error))failure;
 
-- (void)tbCommunity_requestPortfolioLiteTradingTipsWithSuccess:(void(^)(NSArray *list, TBFeedDataModel *data))success
+- (void)tbCommunity_requestPortfolioLiteTradingTipsWithSuccess:(void(^)(NSArray *list))success
                                                        failure:(void(^)(NSError *error))failure;
+
+- (UIViewController *)tbCommunity_getRspSearchVCWithArray:(NSArray *)array
+                                                 selected:(void(^)(NSDictionary *dict))selected;
+
+- (UIViewController *)tbCommunity_getMoreContractVCWithSymbol:(NSString *)symbol
+                                                        array:(NSArray *)array
+                                                     selected:(void(^)(NSDictionary *dict))selected;
+
+- (UIViewController *)tbCommunity_getSearchMoreContractVCWithSymbol:(NSString *)symbol
+                                                            secType:(NSString *)secType
+                                                      autoLandScape:(BOOL)flag
+                                                         searchType:(NSInteger)type
+                                                              array:(NSArray *)array
+                                                           selected:(void(^)(id model))selected;
+
+- (void)tbCommunity_SetRspSearchVCWithArray:(NSArray *)array
+                                         vc:(UIViewController *)vc;
+
+- (id)tbCommunity_getLandScapeSearchCellItemWithDict:(NSDictionary *)dict;
+
+- (void)tbCommunity_requestThemeInfoWithSuccess:(void(^)(id item))success
+                                        failure:(void(^)(NSString *error))failure;
+
+- (NSString *)tbCommunity_getCommunityTigerLinkByRegion;
+
+- (void)tbCommunity_communityLanguageSettingAlert;
+
+- (NSString *)tbCommunity_getInternationalLangShow;
+
+- (BOOL)tbCommunity_isTrendSymbol:(NSString *)symbol;
+
+- (void)tbCommunity_addSearchHistory:(NSString *)text;
+
+
+- (UIViewController *)tbCommunity_getNoticeVCWithTitle:(NSString *)title
+                                                symbol:(NSString *)symbol
+                                               secType:(NSString *)secType
+                                                market:(NSString *)market
+                                                nameCN:(NSString *)nameCN;
+
+- (UIViewController *)tbCommunity_getNewsVCWithTitle:(NSString *)title
+                                              symbol:(NSString *)symbol
+                                             secType:(NSString *)secType
+                                              market:(NSString *)market
+                                              nameCN:(NSString *)nameCN;
+
+- (UIViewController *)tbCommunity_getPostVCWithStockInTradingTime:(BOOL)flag
+                                                        isIpoStep:(BOOL)isIpo
+                                                           symbol:(NSString *)symbol
+                                                          secType:(NSString *)secType
+                                                           market:(NSString *)market
+                                                           nameCN:(NSString *)nameCN
+                                                         preClose:(nullable NSNumber *)preClose
+                                                      latestPrice:( nullable NSNumber *)price
+                                                            title:(NSString *)title;
+
+- (void)tbCommunity_fetchNewsListWithStockDetailNewsVC:(UIViewController *)VC;
+
+- (void)tbCommunity_fetchPostListWithStockDetailPostVC:(UIViewController *)VC;
+
+- (UITableView *)tbCommunity_getTrackScrollViewWithStockDetailPostVC:(UIViewController *)VC;
+
+- (void)tbCommunity_fetchNoticeListWithStockDetailNoticeVC:(UIViewController *)VC;
+
+
+- (UIViewController *)tbCommunity_getSimilarCandleHotViewControllerWithSymbolList:(NSArray *)list searchStockType:(NSInteger)type selectedBlock:(void (^)(NSString *text))block;
+
+- (void)tbCommunity_requestIpoThemePostListWithSuccess:(void(^)(NSArray *list))success
+                                               failure:(void(^)(NSString *error))failure;
+
+- (void)tbCommunity_gotoPostDetailPage:(int64_t)postId
+                         jumpToComment:(BOOL)jumpToComment;
+
+- (id)tbCommunity_getStockLandSearchModelWithSymbol:(NSString *)symbol
+                                       originSymbol:(NSString *)originSymbol
+                                             nameCN:(NSString *)nameCN
+                                            secType:(NSString *)secType
+                                              maket:(NSString *)market;
+
+- (UIViewController *)tbCommunity_getNewStockSearchViewControllerWithVC:(UIViewController *)vc delegate:(id)delegate top:(CGFloat)top groupArray:(NSArray *)array;
+
+- (void)tbCommunity_searchKeyWord:(NSString *)word vc:(UIViewController *)vc;
+
+/// 个股多空表态
+- (void)tbCommunity_fetchStockTrend:(NSString *)symbol
+                          itemWidth:(CGFloat)width
+                            success:(void(^)(id result))success
+                            failure:(void(^)(NSString *message, NSError *error))failure;
+
+/// 多空表态详情页
+- (void)tbCommunity_fetchStockTrendList:(NSString *)symbol
+                                success:(void(^)(id result))success
+                                failure:(void(^)(NSString * message))failure;
+
+- (NSInteger)tbCommunity_getStockDetailTrendStockItemRankListCountWithCellItem:(id)item;
 
 // 检查是否需要返回活动功能
 - (void)tbCommunity_showFloatIfNeededWithUrlPath:(NSString *)path;
 
 // 获取基金资讯tab的推广位cellItem
 - (id)tbCommunity_fundMallCommunityRecommendTableViewCellItem:(NSString *)symbol dic:(NSDictionary *)dic;
+
+// 老虎早晚报image
+- (UIImage *)tbCommunity_newspaperMessageImage:(NSTimeInterval)time isHomePage:(BOOL)flag;
+
+- (BOOL)tbCommunity_isDuringNewspaper;
+
+/**
+ * 获取早晚报更新时间
+ * @param completion hasReadNewNewspaper:是否已读更新的早晚报 newNewspaperTime:早晚报更新时间
+ */
+- (void)tbCommunity_fetchNewspaperStatus:(void(^)(BOOL success, BOOL hasReadNewNewspaper, NSTimeInterval newNewspaperTime))completion;
+
+// 分享logo图片链接
+- (NSString *)tbCommunity_tigerShareLogoLink;
+
+// 是否在跳转GCS客服前先显示VIP微信客服
+- (BOOL)tbCommunity_shouldShowVipWechatBeforeGCS;
+- (void)tbCommunity_fetchVipWechat;
+
+// 是否是明星投资者
+- (BOOL)tbCommunity_isStarInvestor;
+
+/*
+ 判断订单是否可以分享发帖
+ orderId 订单id
+ completion 回调
+ */
+- (void)tbCommunity_checkSharePermissionWithOrderId:(id)orderId
+                                         completion:(void (^)(NSDictionary *orderPermissionInfo))completion;
+
+/*
+ 展示明星投资者订单分享弹窗
+ orderId 订单id
+ symbolName 订单标的名称
+ amountString 订单数量（股/手）
+ actionString 订单方向（买入/卖出）
+ arriveFrom 来源
+ */
+- (void)tbCommunity_starInvestorShareWithOrderId:(id)orderId
+                                      symbolName:(NSString *)symbolName
+                                    amountString:(NSString *)amountString
+                                    actionString:(NSString *)actionString
+                                      arriveFrom:(NSString *)arriveFrom;
+
+// 订单分享成功Key
+- (NSString *)tbCommunity_getNotificationKey_NOTIFICATION_STAR_INVESTOR_SHARE_ORDER;
 
 @end
 

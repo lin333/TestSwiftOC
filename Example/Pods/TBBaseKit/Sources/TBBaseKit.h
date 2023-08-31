@@ -43,6 +43,7 @@
 #import <TBServiceProtocolKit/TBAccountSystemComponentService.h>
 #import <TBServiceProtocolKit/TBAuthBusinessComponentService.h>
 #import <TBServiceProtocolKit/TBCommunityComponentService.h>
+#import <TBServiceProtocolKit/TBLiveComponentService.h>
 #import <TBServiceProtocolKit/TBFundMallComponentService.h>
 #import <TBServiceProtocolKit/TBInitializeComponentService.h>
 #import <TBServiceProtocolKit/TBMeBusinessComponentService.h>
@@ -58,9 +59,11 @@
 #import <TBServiceProtocolKit/TBShellProjectService.h>
 #import <TBServiceProtocolKit/TBTradeUPShellService.h>
 #import <TBServiceProtocolKit/TBUIKitComponentService.h>
+#import <TBServiceProtocolKit/TBStockBaseKitComponentService.h>
 #import <TBServiceProtocolKit/TBBusinessSupportService.h>
 #import <TBServiceProtocolKit/TBToolsKitComponentService.h>
 #import <TBServiceProtocolKit/TBSwiftComponentService.h>
 #import <TBServiceProtocolKit/TBPerformanceComponentService.h>
+#import <TBServiceProtocolKit/TBUploadComponentService.h>
 
 #endif /* TBBaseKit_h */

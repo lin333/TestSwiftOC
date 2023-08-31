@@ -36,9 +36,15 @@
 }
 
 - (id)sensorsdata_propertyValueWithKey:(NSString *)key error:(NSError *__autoreleasing  _Nullable *)error {
-    NSUInteger length = [self lengthOfBytesUsingEncoding:NSUTF8StringEncoding];
-    if (length > kSAPropertyValueMaxLength) {
-        SALogWarn(@"%@'s length is longer than %ld", self, kSAPropertyValueMaxLength);
+    NSInteger maxLength = kSAPropertyValueMaxLength;
+    if ([key isEqualToString:@"app_crashed_reason"]) {
+        maxLength = maxLength * 2;
+    }
+    if (self.length >= maxLength) {
+        SALogWarn(@"%@'s length is longer than %ld", self, maxLength);
+        NSMutableString *tempString = [NSMutableString stringWithString:[self substringToIndex:maxLength - 1]];
+        [tempString appendString:@"$"];
+        return [tempString copy];
     }
     return self;
 }
@@ -141,10 +147,13 @@
     if (![properties isKindOfClass:[NSDictionary class]] || ![validator conformsToProtocol:@protocol(SAEventPropertyValidatorProtocol)]) {
         return nil;
     }
+    
+    NSDictionary *newProperties = [NSDictionary dictionaryWithDictionary:properties];
+    
     NSMutableDictionary *result = [NSMutableDictionary dictionary];
-    for (id key in properties) {
+    for (id key in newProperties) {
         NSError *error = nil;
-        id value = [validator sensorsdata_validKey:key value:properties[key] error:&error];
+        id value = [validator sensorsdata_validKey:key value:newProperties[key] error:&error];
         if (error) {
             SALogError(@"%@",error.localizedDescription);
         }

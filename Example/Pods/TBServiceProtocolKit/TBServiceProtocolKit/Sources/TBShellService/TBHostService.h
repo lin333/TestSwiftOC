@@ -48,6 +48,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (NSString *)getChineseCustomerServerHost;
 
 - (NSString *)gcsChatServerHost; // GCS在线客服
+- (NSString *)gcsChatServerHostWithLicense:(NSString *)license;
 - (NSString *)ticketServerHost; // 新版用户反馈API/工单域名
 
 // 获取学院host

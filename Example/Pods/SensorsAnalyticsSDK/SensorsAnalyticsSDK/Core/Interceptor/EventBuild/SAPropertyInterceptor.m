@@ -36,11 +36,19 @@
 - (void)processWithInput:(SAFlowData *)input completion:(SAFlowDataCompletion)completion {
     NSParameterAssert(input.eventObject);
 
+    // 线上极端情况下，切换到异步 serialQueue 后，eventObject 可能被释放
+    if(!input.eventObject || ![input.eventObject isKindOfClass:SABaseEventObject.class]) {
+        input.state = SAFlowStateError;
+        input.message = @"A memory problem has occurred, eventObject may be freed. End the track flow";
+        completion(input);
+    }
+
     // 注册自定义属性采集插件，采集 track 附带属性
     SACustomPropertyPlugin *customPlugin = [[SACustomPropertyPlugin alloc] initWithCustomProperties:input.properties];
     [[SAPropertyPluginManager sharedInstance] registerCustomPropertyPlugin:customPlugin];
 
     SABaseEventObject *object = input.eventObject;
+
     // 获取插件采集的所有属性
     NSDictionary *pluginProperties = [[SAPropertyPluginManager sharedInstance] propertiesWithFilter:object];
     // 属性合法性校验
@@ -79,7 +87,10 @@
         [properties removeObjectForKey:kSADeviceIDPropertyPluginAnonymizationID];
     }
 
-    [object.properties addEntriesFromDictionary:[properties copy]];
+    // 避免 object.properties 调用 addEntriesFromDictionary 时同时获取 object.properties
+    NSMutableDictionary *objectProperties = [NSMutableDictionary dictionaryWithDictionary:object.properties];
+    [objectProperties addEntriesFromDictionary:[properties copy]];
+    object.properties = objectProperties;
 
     // 从公共属性中更新 lib 节点中的 $app_version 值
     NSDictionary *superProperties = [SAPropertyPluginManager.sharedInstance currentPropertiesForPluginClasses:@[SASuperPropertyPlugin.class]];

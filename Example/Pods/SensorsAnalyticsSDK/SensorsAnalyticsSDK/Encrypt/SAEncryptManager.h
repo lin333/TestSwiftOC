@@ -30,6 +30,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign, getter=isEnable) BOOL enable;
 @property (nonatomic, strong) SAConfigOptions *configOptions;
 
+- (NSDictionary *)encryptEventRecord:(NSDictionary *)eventRecord;
+- (NSDictionary *)decryptEventRecord:(NSDictionary *)eventRecord;
 @end
 
 NS_ASSUME_NONNULL_END

@@ -4,13 +4,13 @@ source 'https://github.com/cocoapods/specs.git'
 
 use_frameworks!
 
-platform :ios, '12.0'
+platform :ios, '13.0'
 
 target 'TestSwiftOC_Example' do
   pod 'TestSwiftOC', :path => '../'
 
-  pod 'ChartKLineView', :podspec => 'https://git.tigerbrokers.net/luopengfei/TBChartViews/raw/Dev/ChartKLineView.podspec'
-  pod 'TBBaseKit', :podspec => 'https://git.tigerbrokers.net/ios/TBBaseKit/raw/dev/TBBaseKit.podspec', :modular_headers => true
+#  pod 'ChartKLineView', :podspec => 'https://git.tigerbrokers.net/luopengfei/TBChartViews/raw/Dev/ChartKLineView.podspec'
+#  pod 'TBBaseKit', :podspec => 'https://git.tigerbrokers.net/ios/TBBaseKit/raw/dev/TBBaseKit.podspec', :modular_headers => true
   pod 'TBServiceProtocolKit', :podspec => 'https://git.tigerbrokers.net/ios/TBServiceProtocolKit/raw/dev/TBServiceProtocolKit.podspec'
 
 end

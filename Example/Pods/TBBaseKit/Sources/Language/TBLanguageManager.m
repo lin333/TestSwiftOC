@@ -142,6 +142,21 @@ static NSString *currentFolderName = @"";
         else if (!TBIsTradeUP && [systemLan hasPrefix:@"zh-Hant"]) { // TradeUP没有繁体
             languageType = TBLanguageTypeZhHant;
         }
+        else if (!TBIsTradeUP && [systemLan hasPrefix:@"vi"]) {// 同上，TradeUP 不支持下面五种语言
+            languageType = TBLanguageTypeVI_VN;
+        }
+        else if (!TBIsTradeUP && [systemLan hasPrefix:@"th"]) {
+            languageType = TBLanguageTypeTH_TH;
+        }
+        else if (!TBIsTradeUP && [systemLan hasPrefix:@"id"]) {
+            languageType = TBLanguageTypeID_ID;
+        }
+        else if (!TBIsTradeUP && [systemLan hasPrefix:@"es"]) {
+            languageType = TBLanguageTypeES_ES;
+        }
+        else if (!TBIsTradeUP && [systemLan hasPrefix:@"pt"]) {
+            languageType = TBLanguageTypePT_PT;
+        }
         else {
             languageType = TBLanguageTypeEnglish;
         }
@@ -151,24 +166,22 @@ static NSString *currentFolderName = @"";
 
 + (TBLanguageType)currentAppLanguageType
 {
-    NSUInteger selectedIndex = [TBService(TBSwiftComponentService) swiftService_languageCurrentType];
-//    NSUInteger selectedIndex = [TBSwiftLanguageManager currentType];
+    NSUInteger currentType = [TBService(TBSwiftComponentService) swiftService_languageCurrentType];
     
-    if (selectedIndex == 0) {
+    if (currentType == 0) {
         return [self defaultLanguageType];
     }
     else if (TBIsTradeUP) {
-        // TradeUP英文对应1，中文对应2
-        if (selectedIndex == 1 ||
-            selectedIndex == 3) {
-            return TBLanguageTypeEnglish;
+        // 英文对应3，中文对应1
+        if (currentType == 1) {
+            return TBLanguageTypeZhHans;
         }
         else {
-            return TBLanguageTypeZhHans;
+            return TBLanguageTypeEnglish;
         }
     }
     else {
-        return selectedIndex;
+        return currentType;
     }
 }
 

@@ -31,6 +31,13 @@ typedef NS_ENUM(NSUInteger, SAFlowState) {
     SAFlowStateStop,
     SAFlowStateError,
 };
+
+typedef NS_ENUM(NSUInteger, SAFlushGzipCode) {
+    SAFlushGzipCodePlainText = 1,
+    SAFlushGzipCodeEncrypt = 9,
+    SAFlushGzipCodeTransportEncrypt = 13,
+};
+
 typedef void(^SAFlowDataCompletion)(SAFlowData *output);
 
 @interface SAFlowData : NSObject
@@ -65,9 +72,12 @@ typedef void(^SAFlowDataCompletion)(SAFlowData *output);
 
 /// 单条数据记录
 ///
-/// eventObject 转 json 后，构建 record
+/// eventObject 转 json 后，构建 record，待入库
 @property (nonatomic, strong, nullable) SAEventRecord *record;
 
+/// 多条数据记录
+///
+/// 从库中读取的数据记录，eventObject 转 json 后，构建 record，待上传
 @property (nonatomic, strong, nullable) NSArray<SAEventRecord *> *records;
 @property (nonatomic, strong, nullable) NSArray<NSString *> *recordIDs;
 
@@ -78,6 +88,8 @@ typedef void(^SAFlowDataCompletion)(SAFlowData *output);
 @property (nonatomic, assign) NSInteger statusCode;
 @property (nonatomic, copy, nullable) NSString *cookie;
 @property (nonatomic, assign) NSInteger repeatCount;
+
+@property (nonatomic, assign) SAFlushGzipCode gzipCode;
 
 @end
 
