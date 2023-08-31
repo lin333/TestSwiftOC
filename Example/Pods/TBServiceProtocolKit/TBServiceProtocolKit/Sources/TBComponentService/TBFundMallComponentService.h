@@ -67,9 +67,6 @@ NS_ASSUME_NONNULL_BEGIN
                    success:(void(^_Nullable)(_Nullable id result))success
                    failure:(void(^_Nullable)(NSString * _Nullable message))failure;
 
-// 获取一组基金的涨跌幅数据
-- (void)tbFund_fetchFundComparisonData:(NSArray *)symbols success:(void(^)(NSArray *result))success failure:(void(^)(NSString *message))failure;
-
 /// 钱袋子名称
 - (NSString *)tbFund_TigerVaultName;
 

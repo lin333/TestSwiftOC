@@ -11,6 +11,6 @@ target 'TestSwiftOC_Example' do
 
 #  pod 'ChartKLineView', :podspec => 'https://git.tigerbrokers.net/luopengfei/TBChartViews/raw/Dev/ChartKLineView.podspec'
 #  pod 'TBBaseKit', :podspec => 'https://git.tigerbrokers.net/ios/TBBaseKit/raw/dev/TBBaseKit.podspec', :modular_headers => true
-  pod 'TBServiceProtocolKit', :podspec => 'https://git.tigerbrokers.net/ios/TBServiceProtocolKit/raw/dev/TBServiceProtocolKit.podspec'
+  pod 'TBServiceProtocolKit', :podspec => 'https://git.tigerbrokers.net/ios/TBServiceProtocolKit/raw/dev-906-chenxin/TBServiceProtocolKit.podspec'
 
 end

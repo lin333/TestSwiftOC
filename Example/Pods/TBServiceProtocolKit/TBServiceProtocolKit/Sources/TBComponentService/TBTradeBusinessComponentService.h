@@ -71,50 +71,8 @@ NS_ASSUME_NONNULL_BEGIN
 // 交易tab标题控件
 - (nonnull UIView *)tbTradeBusiness_tradeSummaryTitleView;
 
-- (nonnull UIView *)tbTradeBusiness_tradeSummaryTitleViewWithChangeAccountBlock:(void (^)(void))block;
-
-- (void)tbTradeBusiness_share:(id)shareObject
-                     userInfo:(nullable NSDictionary *)userInfo;
-
-- (id)tbTradeBusiness_parentPositionItemModelOfLegContractId:(NSString *)contractId;
-
-- (id)tbTradeBusiness_getIBPortfolioStatBriefItemModelWithDictionary:(NSDictionary *)dict;
-
-- (NSArray *)tbTradeBusiness_sortOrdersWithArray:(NSArray *)orders;
-
-- (void)tbTradeBusiness_updatePositionDataItem:(id)item;
-
-/**
- * 查询组合视图下的用户个股及个股所在多腿持仓
- */
-- (void)tbTradeBusiness_getPositionOfSymbol:(NSString *)symbol
-                    secType:(nullable NSString *)secType
-                     expiry:(nullable NSString *)expiry
-                     strike:(nullable NSString *)strike
-                      right:(nullable NSString *)right
-                     legs:(nullable NSArray<NSDictionary *> *)legs
-                    success:(void(^)(NSArray *positions))success
-                    failure:(void(^)(NSError *error))failure;
-
-- (void)tbTradeBusiness_getOpenOrders:(nullable NSString *)symbol
-              secType:(nullable NSString *)secType
-               market:(nullable NSString *)market
-            comboType:(nullable NSString *)comboType
-            contracts:(nullable NSArray<NSDictionary *> *)contracts
-              success:(nullable void (^)(NSArray * _Nullable orders))success
-              failure:(nullable void (^)(NSInteger ret, NSString * _Nullable status, NSString * _Nullable message, NSError * _Nullable error))failure;
-
-- (void)tbTradeBusiness_updateCurrentOpenOrders:(NSArray *)symbolArray;
-
-- (void)tbTradeBusiness_fetchTodayOrders:(nullable NSString *)segType
-                 secType:(nullable NSString *)secType
-                  symbol:(nullable NSString *)symbol
-               comboType:(nullable NSString *)comboType
-                    legs:(nullable NSArray <NSDictionary *> *)legs
-                 success:(void (^)(NSArray * _Nullable))success
-                 failure:(nullable void (^)(NSInteger ret, NSString * _Nullable status, NSString * _Nullable message, NSError * _Nullable error))failure;
-
 ///  跳转到TradeSummary里的某个子页面
+/// @param notification
 - (void)tbTradeBusiness_gotoTradeSummaryVCTab:(UIViewController *_Nonnull)selectedViewController
                            notificationObject:(id _Nullable)notificationObject;
 
@@ -127,15 +85,6 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)tbTradeBusiness_initAssetPositionOrderStatusDateManager;
 
 - (void)tbTradeBusiness_fetchCustomerTradeCheck;
-
-- (id)tbTradeBusiness_initCheckPlaceOrderManager;
-
-- (void)tbTradeBusiness_checkPlaceOrderManager:(id)manager model:(nullable id)orderModel
-                     secInfo:(id)secInfo
-                contractInfo:(id)contractInfo
-               checkingItems:(NSArray *)checkingTypes
-                                    completion:(void(^)(BOOL finished, NSInteger stoppedCheckItem,
-                                        NSInteger checkResultAction))completion;
 
 /**
  * 跳转到入金页面
@@ -158,25 +107,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// 获取持仓通知key
 - (NSString *)tbTradeBusiness_getNotificationKey_NOTIFICATION_KEY_POSITION_CHANGED;
-
-/// 订单变化通知key
-- (NSString *)tbTradeBusiness_getNotificationKey_NOTIFICATION_KEY_ORDERS_CHANGED;
-
-
-- (NSArray *)tbTradeBusiness_getOriginSymbolsOfPositions;
-
-// 获取当前账户持仓
-- (void)tbTradeBusiness_getPositionsWithSuccess:(nullable void(^)(void))success
-                                        failure:(nullable void(^)(NSError *error))failure;
-
-
-- (BOOL)tbTradeBusiness_hasStockPositionForSymbol:(NSString *)symbol;
-
-- (void)tbTradeBusiness_getPositionOfSymbol:(NSString *)symbol
-                                    secType:(NSString *)secType
-                                     market:(nullable NSString *)market
-                                    success:(void(^)(id position))success
-                                    failure:(void(^)(NSError *error))failure;
 
 // MARK: TBExchangeRateManager
 // 查看 ExchangeRateDictionary是否存在，不存在requestExchangeRateWithCompletion
@@ -253,9 +183,6 @@ NS_ASSUME_NONNULL_BEGIN
 - (BOOL)tbTradeBusiness_isValidStockScale:(NSNumber *)scale
                                  forPrice:(NSNumber *)price;
 
-- (void)tbTradeBusiness_getAssetSuccess:(void (^)(id asset))success
-                                failure:(void (^)(NSInteger ret, NSString *status, NSString *message, NSError *error))failure;
-
 - (NSString *)tbTradeBusiness_getAssetCapability;
 
 /// 条件订单符合：≤，≥，≠，=，<，>
@@ -292,12 +219,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// 是否显示数字货币资金划转弹窗
 - (BOOL)tbTradeBusiness_showTransferDigitalAlert;
-
-- (NSInteger)tbTradeBusiness_assetDataManagerGetAccountType;
-
-- (BOOL)tbTradeBusiness_isDigitalAssetEmpty;
-
-- (NSString *)tbTradeBusiness_assetDataManagerGetAccountTypeString;
 
 /**
  待成交订单提醒
@@ -381,205 +302,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (NSArray *_Nullable)tbTradeBusiness_positionDataManagerGetOtherPositions;
 
-- (NSArray *_Nullable)tbTradeBusiness_positionDataManagerGetFuturesPositions;
-
-- (NSArray *_Nullable)tbTradeBusiness_positionDataManagerGetDigitalPositions;
-
-- (UIViewController *)tbTradeBusiness_cancelVCFromBottom:(id _Nullable)orderItem
-                                           futPriceModel:(id _Nullable)futPriceModel
-                                        futContractModel:(id _Nullable)futContractModel;
-
-- (UIViewController *)tbTradeBusiness_modifyOrderVCWithSecInfo:(id)secInfo
-                                                    orderModel:(id)orderModel;
-
-
-- (UIViewController *_Nullable)tbTradeBusiness_speedModeVCWithSecInfo:(id)secInfo
-                                                           limitPrice:(NSNumber *_Nonnull)limitPrice;
-
-- (UIViewController *_Nullable)tbTradeBusiness_speedModeVCFromLeftWithSecInfo:(id)secInfo
-                                                                   limitPrice:(NSNumber *_Nonnull)limitPrice;
-
-/// 配置下单页明细展示：档位/深度 或 明细逐笔
-///
-- (NSInteger)tbTradeBusiness_contractTicksSelectedIndex:(NSString *)market
-                                                secType:(NSString *)secType
-                                           exchangeCode:(NSString *)exchangeCode;
-
-/**
- * 价格输入框点击+-号时调用此方法
- */
-- (NSNumber *)tbTradeBusiness_minTick:(NSNumber *)latestPrice
-                          contactInfo:(id)contactInfo
-                              secInfo:(id)secInfo
-                               ranges:(NSArray *_Nullable*_Nullable)ranges
-                               isLeft:(BOOL)isLeft;
-
-- (NSNumber *)tbTradeBusiness_minTick:(NSNumber *)price
-                          contactInfo:(id)contactInfo
-                              secInfo:(id)secInfo
-                               ranges:(NSArray *_Nullable*_Nullable)ranges;
-
-- (NSString *)tbTradeBusiness_getAllAccountCertifiUrlWithAiPath;
-
-- (NSString *)tbTradeBusiness_getAllAccountCertifiUrlWithPiPath;
-
-- (NSString *)tbTradeBusiness_getAllAccountCertifiUrlWithWiPath;
-
-- (BOOL)tbTradeBusiness_checkPIAuthCertification;
-
-- (void)tbTradeBusiness_AllAccountHelperHandleAccountAction:(NSInteger)actionType;
-
-- (NSString *)tbTradeBusiness_getOrderStatus:(double)totalCount
-                                 filledCount:(double)filledCount
-                                 orderStatus:(NSInteger)orderStatus
-                                  isMonetary:(BOOL)isMonetary;
-- (BOOL)tbTradeBusiness_isAVERAGECostTypeWithSegType:(NSString *)segType;
-
-- (BOOL)tbTradeBusiness_isFIFOCostTypeWithSegType:(NSString *)segType;
-
-/**
- 更新 限价价格，仅限于 非期货 限价单
- */
-- (void)tbTradeBusiness_updateLimitPriceWithSpeedModeVC:(UIViewController *)vc;
-
-- (void)tbTradeBusiness_speedModeVC:(UIViewController *)vc
-                  dismissCompletion:(void (^ __nullable)(void))completion;
-
-- (void)tbTradeBusiness_updateSpeedModeBtnPriceWithVC:(UIViewController *)vc;
-
-- (void)tbTradeBusiness_setLimitPriceWithSpeedModeVC:(UIViewController *)vc
-                                          limitPrice:(NSNumber *)price;
-
-- (void)tbTradeBusiness_setSecInfoWithSpeedModeVC:(UIViewController *)vc
-                                          secInfo:(id)secInfo;
-
-- (void)tbTradeBusiness_setStockOrderCheckerDataSource:(id)dataSource
-                                            vcCallback:(id)callback
-                                                    vc:(id)vc;
-
-- (void)tbTradeBusiness_checkingDidEndWithAction:(NSInteger)action;
-
-- (void)tbTradeBusiness_fetchPlaceOrderBuySellMaxAmount:(id)placeOrderModel
-                  enableFractionalShare:(BOOL)enableFractionalShare
-                         enalbeMonetray:(BOOL)enableMonetray
-                                success:(nullable void(^)(id))success
-                                failure:(nullable void(^)(id))failure;
-
-/** 获取组合期权的保证金
- *
- */
-- (void)tbTradeBusiness_getRiskNavigatorWithParams:(NSDictionary *)params
-                                           success:(void(^)(id responseObject))success
-                                           failure:(void(^)(NSError *error))failure;
-
-/**
- 查询单只合约
- */
-- (void)tbTradeBusiness_orderOmnibusContractsSecType:(nullable NSString *)secType
-                                              symbol:(nullable NSString *)symbol
-                                              expiry:(nullable NSString *)expiry
-                                              strike:(nullable NSString *)strike
-                                               right:(nullable NSString *)right
-                                             success:(void(^)(id itemModel))success
-                                             failure:(void(^)(NSString *message, NSError *error))failure;
-
-- (void)tbTradeBusiness_orderOmnibusContractsSecType:(nullable NSString *)secType
-                           comboType:(NSString *)comboType
-                           contracts:(NSArray <NSDictionary *>*)contracts
-                             success:(void(^)(id itemModel))success
-                             failure:(void(^)(NSString *message, NSError *error))failure;
-
-
-- (UIView *)tbTradeBusiness_getOpenAccountGuideAdvantageView;
-
-- (NSString *)tbTradeBusiness_getNotificationKey_NOTIFICATION_KEY_OPEN_VIRTUALACCOUNT_SUCCESS;
-
-/// 账户切换时，不带虚拟账户信息。（用于IPO列表页，顶部切换账户使用）
-- (void)tbTradeBusiness_floatingShowWithoutVirtualAccountWithBlock:(nullable void (^)(NSInteger))changeAccountTypeBlock;
-
-- (BOOL)tbTradeBusiness_updateOrderLimitPrice:(NSNumber *)limitPrice
-                                           vc:(UIViewController *)vc;
-
-- (BOOL)tbTradeBusiness_getAccountDescriptionModelSelected:(id)item;
-- (BOOL)tbTradeBusiness_getAccountDescriptionModelShowHighlight:(id)item;
-
 - (NSNumber *)tbTradeBusiness_exchangeCurrencyIfNeed:(NSString *)fromCurrency
                                           toCurrency:(NSString *)toCurrency
                                                amout:(NSNumber *)amount;
-
-- (id)tbTradeBusiness_assetDataManagerGetAsset;
-
-- (id)tbTradeBusiness_assetDataManagerGetFuturesAsset;
-
-- (id)tbTradeBusiness_assetDataManagerGetFundAsset;
-
-- (id)tbTradeBusiness_assetDataManagerGetDigitalAsset;
-
-- (void)tbTradeBusiness_handleAccountAction:(NSInteger)actionType
-                                  inAccount:(NSInteger)accountType
-                                   location:(NSInteger)locationType;
-
-- (NSString *)tbTradeBusiness_tradeTimeAlertWithMarket:(NSString *)market
-                                             timestamp:(long long)timestamp
-                                              pageType:(NSInteger)pageType
-                                             orderType:(NSString *)orderType;
-
-- (NSString *)tbTradeBusiness_getOrderActionTypeDes:(NSString *)action;
-
-- (NSString *)tbTradeBusiness_attachOrderPriceDesForAttachOrderType:(NSString *)attachOrderType;
-
-- (NSString *)tbTradeBusiness_orderTypeDescription:(NSString *)orderType;
-
-- (NSString *)tbTradeBusiness_orderTypeDescription:(NSString *)orderType
-                                           subType:(NSString *)subType;
-
-- (BOOL)tbTradeBusiness_canShowRthSettingForMarket:(NSString *)market
-                           secType:(NSString *)secType
-                         orderType:(NSString *)orderType
-                        usOTCOrder:(BOOL)isUsOTCOrder
-                       hkGreyOrder:(BOOL)isHkGreyOrder
-                    conditionOrder:(BOOL)isConditionOrder
-                 composedOrderType:(NSString *)composedOrderType
-                      contractTime:(NSTimeInterval)contractTime;
-
-- (NSString *)tbTradeBusiness_stringLineTypeWithType:(NSInteger)lineType;
-
-- (long long)tbTradeBusiness_getEndTime:(long long)start type:(NSInteger)lineType;
-
-
-- (void)tbTradeBusiness_getStockTradeMark:(nullable NSString *)symbol
-                  secType:(nullable NSString *)secType
-                   market:(nullable NSString *)market
-                    since:(NSInteger)since
-                       to:(NSInteger)to
-            combineSymbol:(nullable NSString *)combineSymbol
-                 group_by:(nullable NSString *)group_by
-                  success:(nullable void (^)(NSArray * _Nonnull items))success
-                  failure:(nullable void (^)(NSString *message, NSError *error))failure;
-/**
- * 获取当前账户的成本类型
- */
-- (NSString *)tbTradeBusiness_getCostTypeForCurrentAccount:(NSString *)account;
-
-- (void)tbTradeBusiness_getOpenOrders:(nullable NSString *)symbol
-              secType:(nullable NSString *)secType
-               market:(nullable NSString *)market
-              success:(nullable void (^)(NSArray* _Nullable orders))success
-              failure:(nullable void (^)(NSInteger ret, NSString * _Nullable status, NSString * _Nullable message, NSError * _Nullable error))failure;
-
-- (void)tbTradeBusiness_fetchFilledOrders:(nullable NSString *)symbol
-                  secType:(NSString *)secType
-                  segType:(NSString *)segType
-                sinceDate:(nullable NSString *)sinceDate
-                   toDate:(nullable NSString *)toDate
-                usePrefix:(BOOL)usePrefix
-              lastOrderId:(nullable NSNumber *)lastOrderId
-                  success:(nullable void (^)(NSArray *orders, BOOL hasMore))success
-                  failure:(nullable void (^)(NSInteger ret, NSString * _Nullable status, NSString * _Nullable message, NSError * _Nullable error))failure;
-
-- (NSDictionary *)tbTradeBusiness_getExchangeRateDictionary;
-
-- (void)tbTradeBusiness_requestExchangeRateWithCompletion:(nullable void (^)(BOOL success))completion;
 
 /**
  * @param coupons 选中的优惠券

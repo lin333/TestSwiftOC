@@ -21,11 +21,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (BOOL)swiftService_isSymbolFront;
 
-- (id)swiftService_showFloatingPanelWithParentVC:(UIViewController *)parentVC
+- (void)swiftService_showFloatingPanelWithParentVC:(UIViewController *)parentVC
                                          contentVC:(UIViewController *)contentVC
                                          trackView:(UIScrollView *)trackView
                                      contentHeight:(CGFloat)contentHeight;
-- (id)swiftService_showFloatingPanelWithParentVC:(UIViewController *)parentVC
+- (void)swiftService_showFloatingPanelWithParentVC:(UIViewController *)parentVC
                                          contentVC:(UIViewController *)contentVC
                                          trackView:(UIScrollView *)trackView
                                      contentHeight:(CGFloat)contentHeight
@@ -60,10 +60,6 @@ NS_ASSUME_NONNULL_BEGIN
 - (NSString *)swiftService_currentLangParameter;
 
 - (void)swiftService_fetchBFFConfigs:(BOOL)updateIndex;
-
-- (void)swiftService_fetchBFFPortfolioFunctionModuleProConfigsWithBlock:(void(^)(BOOL success, NSError *error))block;
-
-- (void)swiftService_resetBFFPortfolioFunctionModuleProConfigs;
 
 @end
 

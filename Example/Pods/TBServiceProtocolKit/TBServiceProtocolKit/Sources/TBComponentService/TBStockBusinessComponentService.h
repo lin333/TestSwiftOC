@@ -322,17 +322,6 @@ NS_ASSUME_NONNULL_BEGIN
                                                     netQuantity:(NSNumber *)quantity
                                                        fromType:(NSString *)fromType;
 
-//标准化价格字符串输出
-- (NSString *)tbStockBusiness_watchlistCellGetPriceString:(id)cellItem;
-//标准化涨跌幅字符串输出
-- (NSString *)tbStockBusiness_watchlistCellGetChangeRateString:(id)cellItem;
-
-//获取某个主题行情分页数据（自定义筛选分页数据）
-- (void)tbStockBusiness_fetchStockListWithFilterConditions:(NSDictionary *)params
-                                                 urlParams:(NSDictionary *)urlParams
-                                                    succss:(void(^)(NSArray * result,NSInteger page,NSInteger totalPage,NSInteger totalCount))successed
-                                                    failed:(void(^)(NSError * _Nullable error))failed;
-
 - (void)tbStockBusiness_fetchStocksBrifeInfo:(NSArray *)stockSymbols
                                   isLiteMode:(BOOL)isLiteMode
                                    successed:(void(^)(id _Nullable result))successed

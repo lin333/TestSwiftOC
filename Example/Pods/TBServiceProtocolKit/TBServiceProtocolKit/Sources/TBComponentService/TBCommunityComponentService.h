@@ -616,7 +616,7 @@ typedef enum : NSUInteger {
  completion 回调
  */
 - (void)tbCommunity_checkSharePermissionWithOrderId:(id)orderId
-                                         completion:(void (^)(NSDictionary *orderPermissionInfo))completion;
+                                         completion:(void (^)(BOOL permitted))completion;
 
 /*
  展示明星投资者订单分享弹窗
@@ -631,9 +631,6 @@ typedef enum : NSUInteger {
                                     amountString:(NSString *)amountString
                                     actionString:(NSString *)actionString
                                       arriveFrom:(NSString *)arriveFrom;
-
-// 订单分享成功Key
-- (NSString *)tbCommunity_getNotificationKey_NOTIFICATION_STAR_INVESTOR_SHARE_ORDER;
 
 @end
 
