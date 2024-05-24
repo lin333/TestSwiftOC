@@ -9,7 +9,7 @@
 @import UIKit;
 
 @interface LBJAppDelegate : UIResponder <UIApplicationDelegate>
-
+啥地方说的第三方说的发斯蒂芬
 @property (strong, nonatomic) UIWindow *window;
 
 @end
