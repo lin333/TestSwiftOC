@@ -34,7 +34,7 @@ TODO: Add long description of the pod here.
  s.pod_target_xcconfig = { "DEFINES_MODULE" => "YES" }
  s.swift_version = "5.0"
   
-  s.resources  = "TestSwiftOC/**/*.{,png,bundle,storyboard,xib,xcassets}"
+#  s.resources  = "TestSwiftOC/**/*.{,png,bundle,storyboard,xib,xcassets}"
 
 #  s.dependency 'ChartKLineView'
 #  s.dependency 'TBTencentOpenAPI'
@@ -52,11 +52,11 @@ TODO: Add long description of the pod here.
     mk.source_files = 'TestSwiftOC/Core/*.{h,m,swift}'
   end
   
-  s.subspec 'MapKit' do |mk|
-    mk.source_files = 'TestSwiftOC/MapKit/*.{h,m,swift}'
-    mk.framework = 'MapKit'
-    mk.dependency 'TestSwiftOC/Core'
-  end
+#  s.subspec 'MapKit' do |mk|
+#    mk.source_files = 'TestSwiftOC/MapKit/*.{h,m,swift}'
+#    mk.framework = 'MapKit'
+#    mk.dependency 'TestSwiftOC/Core'
+#  end
 
   
 #  s.dependency 'MJRefresh'

@@ -22,22 +22,11 @@
     "DEFINES_MODULE": "YES"
   },
   "swift_versions": "5.0",
-  "resources": "TestSwiftOC/**/*.{,png,bundle,storyboard,xib,xcassets}",
   "default_subspecs": "Core",
   "subspecs": [
     {
       "name": "Core",
       "source_files": "TestSwiftOC/Core/*.{h,m,swift}"
-    },
-    {
-      "name": "MapKit",
-      "source_files": "TestSwiftOC/MapKit/*.{h,m,swift}",
-      "frameworks": "MapKit",
-      "dependencies": {
-        "TestSwiftOC/Core": [
-
-        ]
-      }
     }
   ],
   "swift_version": "5.0"
